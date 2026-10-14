@@ -111,13 +111,12 @@ def run_tests():
     with open(workflow_path, "r", encoding="utf-8") as f:
         hb_content = f.read()
 
-    assert "default: false" in hb_content, "Opt-in execution gate must default to false!"
     assert "cron: '0 6 * * 1'" in hb_content, "Weekly schedule must run cron: '0 6 * * 1'"
     assert "METADATA_ONLINE (Cost: $0.00, Execution: SKIPPED)" in hb_content, "Missing clear metadata status label!"
-    assert "Authorization': f'Bearer {token}'" in hb_content, "Token must be passed in Auth header, never in query string!"
-    assert "status == 'SUCCEEDED'" in hb_content, "Must verify status == SUCCEEDED for execution tests!"
-    assert "FATAL: APIFY_TOKEN" in hb_content, "Must exit with fatal error if execution requested without token!"
-    print("[PASS] Heartbeat workflow guarantees $0.00 weekly scheduled runs, header auth, and opt-in execution protection.")
+    assert "APIFY_TOKEN" not in hb_content, "Security breach: APIFY_TOKEN must not exist in heartbeat workflow!"
+    assert "/runs" not in hb_content, "Safety breach: POST /runs must not exist in heartbeat workflow!"
+    assert "run_actor_executions" not in hb_content, "Safety breach: execution dispatch input must be removed!"
+    print("[PASS] Heartbeat workflow guarantees permanent $0.00 zero-cost unauthenticated metadata checks with zero execution risk.")
     validation_results["Heartbeat_Safety"] = "PASS"
 
     # 6. Commercial & Pricing Integrity Check

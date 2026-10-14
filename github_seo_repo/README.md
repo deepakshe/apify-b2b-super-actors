@@ -30,8 +30,18 @@ Serverless data micro-engines designed for **B2B outbound operations**, **Clay e
 Enrich your account lists with security audit metrics, SSL expiration signals, or e-commerce migration opportunities:
 - **Action:** HTTP API Request
 - **Method:** `POST`
-- **URL:** `https://api.apify.com/v2/acts/deepaksheoran172~<ACTOR_SLUG>/run-sync-get-dataset-items?token={{apify_api_token}}`
+- **URL:** `https://api.apify.com/v2/acts/deepaksheoran172~<ACTOR_SLUG>/run-sync-get-dataset-items`
+- **Security & Authentication:** Recommend configuring the `Authorization` header securely via Clay's workspace-level HTTP API (Headers) account (`Bearer YOUR_APIFY_TOKEN`). Keep tokens strictly out of query strings and request bodies.
+- **Headers:**
+  - `Content-Type: application/json`
+  - `Authorization: Bearer {{apify_api_token}}`
 - **Output:** Synchronous array of normalized records.
+- **Verified Clay Formulas (`domain-security-super-auditor`):**
+  - Letter Grade: `{{data[0].letter_grade}}` (e.g. `"A+"`, `"B"`, `"F"`)
+  - Overall Numeric Score: `{{data[0].overall_score}}` (0–100 integer)
+  - Days Until SSL Expiry: `{{data[0].ssl_audit.days_until_expiry}}`
+  - DMARC Policy: `{{data[0].email_deliverability_audit.dmarc_policy}}` (e.g. `"reject"`, `"quarantine"`, `"none"`, `"missing"`)
+  - SPF Policy: `{{data[0].email_deliverability_audit.spf_policy}}` (e.g. `"hardfail (-all)"`, `"softfail (~all)"`, `"dangerous (+all)"`, `"neutral (?all)"`, `"missing"`)
 
 ### 2. n8n Automated Cron Pipelines
 All workflows in `n8n_automated_bundle/` include:
@@ -86,8 +96,9 @@ Connect to Apify's official remote MCP endpoint (`mcp.apify.com`) using Streamab
 ## 🛡️ Transparent Pay-Per-Event (PPE) Billing Model
 
 These micro-engines operate under Apify's Pay-Per-Event (PPE) model:
-- **Granular Event Billing:** Pay only for items processed and operations performed.
-- **Error Isolation:** In `domain-security-super-auditor`, unresolvable domains (`NXDOMAIN`) output diagnostics and isolate errors without charging for deep enrichment stages.
+- **Custom Event Charges vs. Platform Usage Costs:** Custom event fees (`ssl-tls-base-audit` at $0.001; optional `security-headers-dns-enrichment` at $0.001) are defined and charged by Actor logic. Platform compute/memory costs are distinct from event charges and may be covered by the Actor publisher or transferred to the user depending on the current Apify monetization configuration; buyers should not assume platform usage is always charged separately.
+- **Error Isolation (Verified Failure Paths):** In `domain-security-super-auditor`, custom event charges are skipped (`charged: false`) for input formatting errors, unresolvable hostnames (`DNS_NXDOMAIN` or missing A/AAAA records), anti-SSRF blocks, or execution timeouts. Domains that resolve to a public IP but have closed ports or connection timeouts are evaluated with failing grades and assessed the base event charge.
+- **Objective DNS Verification:** Technical inspection of DMARC, SPF, and MX records against published standards (RFC 7208 / RFC 7489) without unsupported deliverability or inbox placement guarantees.
 
 ---
 

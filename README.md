@@ -27,9 +27,12 @@ Serverless data micro-engines designed for **B2B outbound operations**, **Clay e
 
 ## 🛡️ Transparent Pay-Per-Event (PPE) Billing Model
 
-Rather than locking teams into recurring multi-hundred dollar SaaS subscriptions, these micro-engines run on Apify's Pay-Per-Event (PPE) architecture:
-- **Granular Event Billing:** You pay for actual items processed and actions executed, rather than paying for idle server infrastructure.
-- **Error Isolation:** In `domain-security-super-auditor`, runs with unresolvable domains (`NXDOMAIN`) isolate errors cleanly in output records and avoid billing for enrichment phases.
+These micro-engines operate under Apify's Pay-Per-Event (PPE) model:
+- **Custom Event Charges vs. Platform Usage Costs:**
+  - **Custom Event Charges:** Billed per successful audit event defined and charged by the Actor (`ssl-tls-base-audit` at **$0.001 / audit**; optional `security-headers-dns-enrichment` at **$0.001 / enrichment** when `include_dns_deliverability: true` is enabled).
+  - **Platform Usage Costs:** Platform compute and memory consumption are distinct from Actor event fees. Depending on the current Apify Actor monetization configuration, platform usage costs may either be covered by the Actor publisher or transferred to the user; buyers should not assume platform usage is always charged separately.
+- **Error Isolation (Verified Failure Paths):** In `domain-security-super-auditor`, custom event charges (`Actor.charge`) are bypassed (`charged: false`, `events_charged: []`) specifically for input validation errors (`INVALID_DOMAIN_FORMAT`), unresolvable hostnames (`DNS_NXDOMAIN` or missing A/AAAA records), anti-SSRF private IP blocks, or overall audit execution timeouts. If a domain successfully resolves to a public IP but encounters web server or port 443 connection failures, the Actor completes the evaluation with a failing grade and assesses the base audit event charge.
+- **Technical DNS Auditing (No Inbox Guarantees):** Email authentication checks inspect technical DNS records against RFC specifications (RFC 7208 / RFC 7489) and provider thresholds (Google/Yahoo 2024+ sender guidelines). Because inbox placement depends on IP reputation, domain history, sending volume, and content, this engine evaluates DNS configuration alignment rather than guaranteeing deliverability outcomes.
 - **Predictable Scaling:** Workflows in Clay or n8n can process thousands of records with predictable micro-cent event charges.
 
 ---
@@ -52,9 +55,14 @@ Each workflow is pre-wired to Apify's synchronous execution endpoint (`https://a
 ## ⚡ Integration Ecosystem
 
 ### 1. Clay.com Outbound Enrichment Snippet
-Enrich outbound sales tables in Clay with domain security postures, SSL renewal deadlines, and DMARC deliverability metrics:
+Enrich outbound sales tables in Clay with domain security posture, SSL renewal deadlines, and technical DNS authentication records:
+- **Action:** HTTP API Request
 - **Method:** `POST`
-- **URL:** `https://api.apify.com/v2/acts/deepaksheoran172~domain-security-super-auditor/run-sync-get-dataset-items?token={{apify_api_token}}`
+- **URL:** `https://api.apify.com/v2/acts/deepaksheoran172~domain-security-super-auditor/run-sync-get-dataset-items`
+- **Security & Authentication:** Recommend configuring the `Authorization` header securely via Clay's workspace-level HTTP API (Headers) account (`Bearer YOUR_APIFY_TOKEN`). Keep tokens strictly out of query strings and request bodies.
+- **Headers:**
+  - `Content-Type: application/json`
+  - `Authorization: Bearer {{apify_api_token}}`
 - **Body:**
   ```json
   {
@@ -64,7 +72,13 @@ Enrich outbound sales tables in Clay with domain security postures, SSL renewal 
     "timeout_seconds": 10
   }
   ```
-- **Clay Formula Extraction:** `{{data[0].letter_grade}}` (e.g. "A+", "D-") or `{{data[0].ssl_audit.days_until_expiry}}`.
+- **Clay Formula Extractions (Verified Schema):**
+  - Composite Letter Grade: `{{data[0].letter_grade}}` (e.g. `"A+"`, `"B"`, `"F"`)
+  - Overall Numeric Score: `{{data[0].overall_score}}` (0–100 integer)
+  - Days Until SSL Expiry: `{{data[0].ssl_audit.days_until_expiry}}`
+  - DMARC Policy Status: `{{data[0].email_deliverability_audit.dmarc_policy}}` (e.g. `"reject"`, `"quarantine"`, `"none"`, `"missing"`)
+  - SPF Policy Status: `{{data[0].email_deliverability_audit.spf_policy}}` (e.g. `"hardfail (-all)"`, `"softfail (~all)"`, `"dangerous (+all)"`, `"neutral (?all)"`, `"missing"`)
+  - Mail Provider: `{{data[0].email_deliverability_audit.mx_provider}}` (e.g. `"Google Workspace"`, `"Microsoft 365"`)
 
 ### 2. n8n Automated Cron Pipelines
 In n8n, click **Workflow > Import from URL**, paste any of the Raw URLs from the table above, set your `APIFY_API_TOKEN` environment variable, and run daily scheduled audits with zero code.
