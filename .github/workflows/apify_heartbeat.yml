@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       run_actor_executions:
-        description: '⚠️ WARNING: Trigger live Actor test executions (Consumes Apify compute & PPE fees)?'
-        required: true
+        description: '⚠️ WARNING: Enable live paid Actor executions (Consumes Apify compute & PPE fees)?'
+        required: false
         type: boolean
         default: false
 
@@ -25,15 +25,54 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Validate Execution Mode & Safety Gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          RAW_INPUT: ${{ inputs.run_actor_executions }}
+        run: |
+          python -c "
+          import os, sys
+
+          event_name = os.environ.get('EVENT_NAME', '').strip().lower()
+          raw_input = os.environ.get('RAW_INPUT', '').strip().lower()
+
+          print('=== Execution Mode & Safety Gate Validation ===')
+          print(f'Trigger Event: {event_name}')
+          print(f'Raw Input (run_actor_executions): \"{raw_input}\"')
+
+          # Scheduled runs are strictly zero-cost metadata checks
+          if event_name == 'schedule':
+              mode = 'METADATA_ONLY'
+              print('Mode Resolved: METADATA_ONLY (Forced by schedule trigger — Cost: $0.00)')
+          elif raw_input == 'true':
+              mode = 'PAID_EXECUTION'
+              print('Mode Resolved: PAID_EXECUTION (Explicit manual opt-in verified)')
+          else:
+              mode = 'METADATA_ONLY'
+              if raw_input in ('false', '0', 'no', ''):
+                  print('Mode Resolved: METADATA_ONLY (Default safe mode — Cost: $0.00)')
+              else:
+                  print(f'Mode Resolved: METADATA_ONLY (Ambiguous input \"{raw_input}\" safely defaulted to zero-cost mode)')
+
+          print(f'Active Mode: {mode}')
+
+          # Export resolved mode to GITHUB_ENV
+          env_file = os.environ.get('GITHUB_ENV')
+          if env_file:
+              with open(env_file, 'a', encoding='utf-8') as f:
+                  f.write(f'RESOLVED_MODE={mode}\n')
+          "
+
       - name: Run Heartbeat Probes
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-          RUN_EXECUTIONS: ${{ inputs.run_actor_executions }}
+          RESOLVED_MODE: ${{ env.RESOLVED_MODE }}
         run: |
           python -c "
           import urllib.request, json, os, sys
 
-          run_executions_flag = os.environ.get('RUN_EXECUTIONS', 'false').lower() == 'true'
+          mode = os.environ.get('RESOLVED_MODE', 'METADATA_ONLY').strip().upper()
+          is_paid_execution = (mode == 'PAID_EXECUTION')
           token = os.environ.get('APIFY_TOKEN', '').strip()
 
           actors = [
@@ -46,16 +85,16 @@ jobs:
           ]
 
           print('=== Apify B2B Super-Actors Availability Monitor ===')
-          print(f'Execution Mode: {\"ACTIVE_EXECUTION_TEST (Paid Runs)\" if run_executions_flag else \"METADATA_HEALTH_CHECK (Cost: $0.00)\"}\n')
+          print(f'Active Execution Mode: {mode}\n')
 
-          if run_executions_flag and not token:
+          if is_paid_execution and not token:
               print('[!] FATAL: APIFY_TOKEN repository secret is missing. Cannot execute paid Actor tests.', file=sys.stderr)
               sys.exit(1)
 
           success_count = 0
           for slug, payload in actors:
               base_url = f'https://api.apify.com/v2/acts/deepaksheoran172~{slug}'
-              if run_executions_flag:
+              if is_paid_execution:
                   run_url = f'{base_url}/runs?waitForFinish=60'
                   req = urllib.request.Request(
                       run_url,
@@ -80,7 +119,7 @@ jobs:
                           continue
 
                       data = json.loads(resp.read().decode('utf-8'))
-                      if run_executions_flag:
+                      if is_paid_execution:
                           status = data.get('data', {}).get('status')
                           run_id = data.get('data', {}).get('id', 'N/A')
                           if status == 'SUCCEEDED':
@@ -98,7 +137,7 @@ jobs:
               except Exception as e:
                   print(f'[-] {slug} check failed: {e}')
 
-          print(f'\nSummary: {success_count}/{len(actors)} verified.')
+          print(f'\nSummary: {success_count}/{len(actors)} verified in {mode} mode.')
           if success_count < len(actors):
               sys.exit(1)
           "
