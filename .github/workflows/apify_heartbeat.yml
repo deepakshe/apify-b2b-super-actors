@@ -40,19 +40,18 @@ jobs:
           print(f'Trigger Event: {event_name}')
           print(f'Raw Input (run_actor_executions): \"{raw_input}\"')
 
-          # Scheduled runs are strictly zero-cost metadata checks
-          if event_name == 'schedule':
-              mode = 'METADATA_ONLY'
-              print('Mode Resolved: METADATA_ONLY (Forced by schedule trigger — Cost: $0.00)')
-          elif raw_input == 'true':
+          # Paid execution is strictly restricted to manual workflow_dispatch with explicit 'true' input
+          if event_name == 'workflow_dispatch' and raw_input == 'true':
               mode = 'PAID_EXECUTION'
               print('Mode Resolved: PAID_EXECUTION (Explicit manual opt-in verified)')
           else:
               mode = 'METADATA_ONLY'
-              if raw_input in ('false', '0', 'no', ''):
+              if event_name == 'schedule':
+                  print('Mode Resolved: METADATA_ONLY (Forced by schedule trigger — Cost: $0.00)')
+              elif raw_input in ('false', '0', 'no', ''):
                   print('Mode Resolved: METADATA_ONLY (Default safe mode — Cost: $0.00)')
               else:
-                  print(f'Mode Resolved: METADATA_ONLY (Ambiguous input \"{raw_input}\" safely defaulted to zero-cost mode)')
+                  print(f'Mode Resolved: METADATA_ONLY (Event \"{event_name}\" or input \"{raw_input}\" safely defaulted to zero-cost mode)')
 
           print(f'Active Mode: {mode}')
 
@@ -66,7 +65,6 @@ jobs:
       - name: Run Heartbeat Probes
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-          RESOLVED_MODE: ${{ env.RESOLVED_MODE }}
         run: |
           python -c "
           import urllib.request, json, os, sys
