@@ -24,7 +24,7 @@
       "submission_endpoint": "https://pulsemcp.com/submit"
     }
   ],
-  "unified_bundle_mcp_url": "https://mcp.apify.com/?actors=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor",
+  "unified_bundle_mcp_url": "https://mcp.apify.com/?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor",
   "actors": [
     {
       "tool_id": "tool1",
@@ -32,9 +32,9 @@
       "actor_id": "3RSgUjqJxd7SkycfH",
       "title": "Shopify Catalog Feed Normalizer",
       "slug": "deepaksheoran172/catalog-feed-normalizer",
-      "mcp_url": "https://mcp.apify.com/?actors=deepaksheoran172/catalog-feed-normalizer",
+      "mcp_url": "https://mcp.apify.com/?tools=deepaksheoran172/catalog-feed-normalizer",
       "category": "E-Commerce & Data Pipelines",
-      "pricing": "Pay-Per-Event ($0.001/run) - 100% Fair-Billing Guarantee",
+      "pricing": "Pay-Per-Event (.05 base + .0005/item normalized)",
       "seo_short_description": "Convert messy supplier CSV feeds into RFC 4180 Shopify product import CSVs with automatic multi-variant grouping and formula protection.",
       "seo_long_description": "Eliminate hours of manual spreadsheet repair. Ingests messy, inconsistent CSVs and raw product feeds from vendors, automatically maps columns, groups multi-variant SKUs under canonical handles, normalizes prices to two decimals, and sanitizes dangerous spreadsheet formula triggers (=, +, -, @) to guarantee 100% rejection-free Shopify catalog imports.",
       "keywords": [
@@ -58,9 +58,9 @@
       "actor_id": "MQ4wt5sZNzo1YBAAH",
       "title": "Website Health & Broken Link Checker",
       "slug": "deepaksheoran172/website-health-checker",
-      "mcp_url": "https://mcp.apify.com/?actors=deepaksheoran172/website-health-checker",
+      "mcp_url": "https://mcp.apify.com/?tools=deepaksheoran172/website-health-checker",
       "category": "SEO & Technical Auditing",
-      "pricing": "Pay-Per-Event ($0.001/run) - 100% Fair-Billing Guarantee",
+      "pricing": "Pay-Per-Event (.001 base + .002/deep page audit)",
       "seo_short_description": "Detect broken links (404/500), broken images, and redirect loops with SSRF protection and deterministic health score.",
       "seo_long_description": "Audit client websites in seconds without paying for enterprise crawler retainers. Crawls target web pages, checks all hyperlinks and embedded media assets, identifies broken URLs, reports HTTP status codes and redirection chains, and computes an automated health score to prevent silent SEO traffic drops.",
       "keywords": [
@@ -84,9 +84,9 @@
       "actor_id": "qVsV97mUeFQtQFWp1",
       "title": "India Public Tender & Procurement Intelligence Parser",
       "slug": "deepaksheoran172/indian-public-tender-parser",
-      "mcp_url": "https://mcp.apify.com/?actors=deepaksheoran172/indian-public-tender-parser",
+      "mcp_url": "https://mcp.apify.com/?tools=deepaksheoran172/indian-public-tender-parser",
       "category": "GovTech & Procurement Intelligence",
-      "pricing": "Pay-Per-Event ($0.001/run) - 100% Fair-Billing Guarantee",
+      "pricing": "Pay-Per-Event (.02 base query + .005/record parsed)",
       "seo_short_description": "Parse unstructured Indian government tender notices (CPPP, GeM, State Portals) into structured JSON/CSV with ISO UTC dates.",
       "seo_long_description": "Converts complex HTML tender circulars, notices, and procurement documents into pristine, structured business intelligence. Extracts tender reference IDs, issuing authorities, submission deadlines, opening dates, tender values in sanitized INR, and EMD requirements with zero manual data entry.",
       "keywords": [
@@ -110,9 +110,9 @@
       "actor_id": "jwu7PurBv0MV2JU1s",
       "title": "OpenRouter Models & MCP Tool Registry Index",
       "slug": "deepaksheoran172/openrouter-mcp-registry",
-      "mcp_url": "https://mcp.apify.com/?actors=deepaksheoran172/openrouter-mcp-registry",
+      "mcp_url": "https://mcp.apify.com/?tools=deepaksheoran172/openrouter-mcp-registry",
       "category": "AI Infrastructure & MCP Directory",
-      "pricing": "Pay-Per-Event ($0.001/run) - 100% Fair-Billing Guarantee",
+      "pricing": "Pay-Per-Event (.01 base sync + .001/model detail)",
       "seo_short_description": "Query real-time OpenRouter AI models pricing ($/1M tokens, free tiers) and curated Model Context Protocol (MCP) tool registry.",
       "seo_long_description": "Essential infrastructure for AI agents and LLM router gateways. Queries real-time token pricing, context window limits, multimodal capabilities, and free model tiers across OpenRouter, alongside a curated index of vetted Model Context Protocol (MCP) servers and tools for autonomous agents.",
       "keywords": [
@@ -136,9 +136,9 @@
       "actor_id": "ZPRZmU1mNZNJ950Xo",
       "title": "Shopify & WooCommerce Catalog + 301 SEO Redirect Extractor",
       "slug": "deepaksheoran172/store-catalog-redirect-extractor",
-      "mcp_url": "https://mcp.apify.com/?actors=deepaksheoran172/store-catalog-redirect-extractor",
+      "mcp_url": "https://mcp.apify.com/?tools=deepaksheoran172/store-catalog-redirect-extractor",
       "category": "E-Commerce Migration & SEO Protection",
-      "pricing": "Pay-Per-Event ($0.001/run) - 100% Fair-Billing Guarantee",
+      "pricing": "Pay-Per-Event (.05 base extraction + .001/product exported)",
       "seo_short_description": "Extract complete Shopify/WooCommerce product catalogs and generate ready-to-import 301 redirect CSV mappings.",
       "seo_long_description": "Guarantees zero SEO traffic loss during e-commerce store redesigns and migrations. Crawls store catalog endpoints, extracts all live product slugs, tags, prices, and handles, and generates RFC 4180 compliant 301 URL redirect mapping files ready for direct upload into Shopify or WordPress.",
       "keywords": [
@@ -162,9 +162,9 @@
       "actor_id": "4QWzBonorciexxFc3",
       "title": "Domain Security, SSL/TLS, Headers, DNS/DMARC & RDAP Auditor",
       "slug": "deepaksheoran172/domain-security-super-auditor",
-      "mcp_url": "https://mcp.apify.com/?actors=deepaksheoran172/domain-security-super-auditor",
+      "mcp_url": "https://mcp.apify.com/?tools=deepaksheoran172/domain-security-super-auditor",
       "category": "Cybersecurity & B2B Lead Enrichment",
-      "pricing": "Pay-Per-Event ($0.001/run) - 100% Fair-Billing Guarantee",
+      "pricing": "Pay-Per-Event (.001 base audit + .001/security enrichment)",
       "seo_short_description": "Audit SSL/TLS expiry, HSTS, security headers, SPF/DKIM/DMARC email deliverability, and RDAP registration in 1 call.",
       "seo_long_description": "Enterprise-grade cyber posture inspection built for Clay workflows, security consultants, and IT MSPs. Evaluates domain SSL expiration dates, TLS protocol versions, HTTP security headers (HSTS, CSP, X-Frame-Options), SPF and DMARC deliverability records, and RDAP domain age in parallel, outputting a composite 0-100 risk score.",
       "keywords": [

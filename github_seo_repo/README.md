@@ -3,11 +3,11 @@
 [![GitHub Stars](https://img.shields.io/github/stars/deepaksheoran172/apify-b2b-automation-suite?style=social)](https://github.com/deepaksheoran172)
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Portfolio%20Verified-blue?logo=apify)](https://apify.com/deepaksheoran172)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![MCP Ready](https://img.shields.io/badge/Model%20Context%20Protocol-Compatible-purple)](https://mcp.apify.com/?actors=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor)
+[![MCP Ready](https://img.shields.io/badge/Model%20Context%20Protocol-Compatible-purple)](https://mcp.apify.com/?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor)
 
-Enterprise-grade, serverless data pipelines designed for **high-converting B2B agencies**, **Clay outbound enrichment tables**, **n8n automated cron pipelines**, and **autonomous AI agents (Claude Desktop / Cursor IDE)**.
+Serverless data micro-engines designed for **B2B outbound operations**, **Clay enrichment tables**, **n8n automated cron pipelines**, and **autonomous AI agents (Claude Desktop / Cursor IDE)**.
 
-> **Stop paying $200–$500/month for rigid SaaS subscriptions.** Run pay-per-event micro-engines on Apify Cloud with **100% Fair-Billing (`charged=False` on failures)**, zero server maintenance, and sub-second synchronous API responses.
+> **Replace rigid SaaS monthly retainers with Pay-Per-Event cloud execution.** Run pay-per-event micro-engines on Apify Cloud with transparent usage-based billing, zero infrastructure maintenance, and direct REST/dataset API integration.
 
 ---
 
@@ -27,7 +27,7 @@ Enterprise-grade, serverless data pipelines designed for **high-converting B2B a
 ## ⚡ Quickstart: 3-Click Integration Ecosystem
 
 ### 1. Clay.com Outbound Enrichment
-Enrich your account lists with deep security scores, email deliverability audit signals, or e-commerce migration opportunities:
+Enrich your account lists with security audit metrics, SSL expiration signals, or e-commerce migration opportunities:
 - **Action:** HTTP API Request
 - **Method:** `POST`
 - **URL:** `https://api.apify.com/v2/acts/deepaksheoran172~<ACTOR_SLUG>/run-sync-get-dataset-items?token={{apify_api_token}}`
@@ -46,8 +46,23 @@ All workflows in `n8n_automated_bundle/` include:
 4. Add your `APIFY_API_TOKEN` environment variable and activate.
 
 ### 3. Model Context Protocol (MCP) for Claude Desktop & Cursor
-Use all 6 tools as native AI tools inside Claude Desktop or Cursor:
+Connect to Apify's official remote MCP endpoint (`mcp.apify.com`) using Streamable HTTP:
 
+#### Native Remote HTTP Configuration (Recommended)
+```json
+{
+  "mcpServers": {
+    "apify-b2b-suite": {
+      "url": "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor",
+      "headers": {
+        "Authorization": "Bearer YOUR_APIFY_TOKEN"
+      }
+    }
+  }
+}
+```
+
+#### Command Bridge via `mcp-remote`
 ```json
 {
   "mcpServers": {
@@ -55,9 +70,12 @@ Use all 6 tools as native AI tools inside Claude Desktop or Cursor:
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-fetch",
-        "https://mcp.apify.com/?actors=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor"
-      ]
+        "mcp-remote",
+        "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor"
+      ],
+      "env": {
+        "APIFY_TOKEN": "YOUR_APIFY_TOKEN"
+      }
     }
   }
 }
@@ -65,11 +83,11 @@ Use all 6 tools as native AI tools inside Claude Desktop or Cursor:
 
 ---
 
-## 🛡️ The 100% Fair-Billing Guarantee
+## 🛡️ Transparent Pay-Per-Event (PPE) Billing Model
 
-All actors in this suite strictly adhere to zero-waste event accounting:
-- If a target domain is unreachable or invalid (`NXDOMAIN`), the run outputs `{"charged": false, "status": "UNREACHABLE"}`.
-- You are never billed for failed runs, network drops, or malformed inputs.
+These micro-engines operate under Apify's Pay-Per-Event (PPE) model:
+- **Granular Event Billing:** Pay only for items processed and operations performed.
+- **Error Isolation:** In `domain-security-super-auditor`, unresolvable domains (`NXDOMAIN`) output diagnostics and isolate errors without charging for deep enrichment stages.
 
 ---
 
@@ -77,6 +95,9 @@ All actors in this suite strictly adhere to zero-waste event accounting:
 
 ```
 .
+├── .github/
+│   └── workflows/
+│       └── apify_heartbeat.yml        # Weekly Cost-Free Metadata Check & Opt-In Test
 ├── README.md                          # SEO & Integration Master Guide
 ├── LICENSE                            # MIT License
 ├── workflows/                         # n8n Automation templates
@@ -86,7 +107,7 @@ All actors in this suite strictly adhere to zero-waste event accounting:
 │   ├── tool4_openrouter_mcp_registry_n8n.json
 │   ├── tool5_store_redirect_extractor_n8n.json
 │   └── tool6_domain_security_auditor_n8n.json
-└── manifests/                         # Smithery / Glama / PulseMCP manifests
+└── mcp/                               # Directory Submission Manifests
     └── mcp_directory_submission.json
 ```
 

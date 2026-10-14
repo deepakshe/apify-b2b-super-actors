@@ -1,0 +1,104 @@
+name: Apify B2B Super-Actors Heartbeat & Metadata Health Check
+
+on:
+  schedule:
+    # Weekly on Mondays at 06:00 UTC (Cost-Free Public Metadata Health Check only)
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      run_actor_executions:
+        description: '⚠️ WARNING: Trigger live Actor test executions (Consumes Apify compute & PPE fees)?'
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  heartbeat:
+    name: Probe Actor Availability
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Heartbeat Probes
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          RUN_EXECUTIONS: ${{ inputs.run_actor_executions }}
+        run: |
+          python -c "
+          import urllib.request, json, os, sys
+
+          run_executions_flag = os.environ.get('RUN_EXECUTIONS', 'false').lower() == 'true'
+          token = os.environ.get('APIFY_TOKEN', '').strip()
+
+          actors = [
+              ('catalog-feed-normalizer', {'rawCsv': 'SKU,Title,Price\nHEARTBEAT-01,Heartbeat Product,10.00'}),
+              ('website-health-checker', {'startUrl': 'https://example.com', 'maxPages': 1}),
+              ('indian-public-tender-parser', {'raw_html': '<table><tr><td>Tender Ref: HB-01</td><td>Value: INR 10,000</td></tr></table>'}),
+              ('openrouter-mcp-registry', {'mode': 'mcp', 'free_only': True}),
+              ('store-catalog-redirect-extractor', {'platform': 'shopify', 'storeUrl': 'https://kith.com', 'maxPages': 1, 'pageSize': 1}),
+              ('domain-security-super-auditor', {'domains': ['example.com'], 'concurrency': 1})
+          ]
+
+          print('=== Apify B2B Super-Actors Availability Monitor ===')
+          print(f'Execution Mode: {\"ACTIVE_EXECUTION_TEST (Paid Runs)\" if run_executions_flag else \"METADATA_HEALTH_CHECK (Cost: $0.00)\"}\n')
+
+          if run_executions_flag and not token:
+              print('[!] FATAL: APIFY_TOKEN repository secret is missing. Cannot execute paid Actor tests.', file=sys.stderr)
+              sys.exit(1)
+
+          success_count = 0
+          for slug, payload in actors:
+              base_url = f'https://api.apify.com/v2/acts/deepaksheoran172~{slug}'
+              if run_executions_flag:
+                  run_url = f'{base_url}/runs?waitForFinish=60'
+                  req = urllib.request.Request(
+                      run_url,
+                      data=json.dumps(payload).encode('utf-8'),
+                      headers={
+                          'Content-Type': 'application/json',
+                          'Authorization': f'Bearer {token}',
+                          'User-Agent': 'ApifyHeartbeatMonitor/2.0'
+                      },
+                      method='POST'
+                  )
+              else:
+                  req = urllib.request.Request(
+                      base_url,
+                      headers={'User-Agent': 'ApifyHeartbeatMonitor/2.0'}
+                  )
+
+              try:
+                  with urllib.request.urlopen(req, timeout=90) as resp:
+                      if resp.status != 200:
+                          print(f'[-] {slug}: HTTP_{resp.status}_ERROR')
+                          continue
+
+                      data = json.loads(resp.read().decode('utf-8'))
+                      if run_executions_flag:
+                          status = data.get('data', {}).get('status')
+                          run_id = data.get('data', {}).get('id', 'N/A')
+                          if status == 'SUCCEEDED':
+                              print(f'[+] {slug}: RUN_SUCCEEDED (Run ID: {run_id})')
+                              success_count += 1
+                          else:
+                              print(f'[-] {slug}: RUN_FAILED (Status: {status}, Run ID: {run_id})')
+                      else:
+                          actor_name = data.get('data', {}).get('name', '')
+                          if actor_name == slug:
+                              print(f'[+] {slug}: METADATA_ONLINE (Cost: $0.00, Execution: SKIPPED)')
+                              success_count += 1
+                          else:
+                              print(f'[-] {slug}: UNEXPECTED_METADATA_NAME (Got: {actor_name})')
+              except Exception as e:
+                  print(f'[-] {slug} check failed: {e}')
+
+          print(f'\nSummary: {success_count}/{len(actors)} verified.')
+          if success_count < len(actors):
+              sys.exit(1)
+          "
