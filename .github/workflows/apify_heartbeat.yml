@@ -2,15 +2,9 @@ name: Apify B2B Super-Actors Heartbeat & Metadata Health Check
 
 on:
   schedule:
-    # Weekly on Mondays at 06:00 UTC (Cost-Free Public Metadata Health Check only)
+    # Weekly on Mondays at 06:00 UTC (Permanently Zero-Cost Public Metadata Health Check)
     - cron: '0 6 * * 1'
   workflow_dispatch:
-    inputs:
-      run_actor_executions:
-        description: '⚠️ WARNING: Enable live paid Actor executions (Consumes Apify compute & PPE fees)?'
-        required: false
-        type: boolean
-        default: false
 
 jobs:
   heartbeat:
@@ -25,90 +19,30 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Validate Execution Mode & Safety Gate
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          RAW_INPUT: ${{ inputs.run_actor_executions }}
+      - name: Run Metadata Health Checks
         run: |
           python -c "
-          import os, sys
-
-          event_name = os.environ.get('EVENT_NAME', '').strip().lower()
-          raw_input = os.environ.get('RAW_INPUT', '').strip().lower()
-
-          print('=== Execution Mode & Safety Gate Validation ===')
-          print(f'Trigger Event: {event_name}')
-          print(f'Raw Input (run_actor_executions): \"{raw_input}\"')
-
-          # Paid execution is strictly restricted to manual workflow_dispatch with explicit 'true' input
-          if event_name == 'workflow_dispatch' and raw_input == 'true':
-              mode = 'PAID_EXECUTION'
-              print('Mode Resolved: PAID_EXECUTION (Explicit manual opt-in verified)')
-          else:
-              mode = 'METADATA_ONLY'
-              if event_name == 'schedule':
-                  print('Mode Resolved: METADATA_ONLY (Forced by schedule trigger — Cost: $0.00)')
-              elif raw_input in ('false', '0', 'no', ''):
-                  print('Mode Resolved: METADATA_ONLY (Default safe mode — Cost: $0.00)')
-              else:
-                  print(f'Mode Resolved: METADATA_ONLY (Event \"{event_name}\" or input \"{raw_input}\" safely defaulted to zero-cost mode)')
-
-          print(f'Active Mode: {mode}')
-
-          # Export resolved mode to GITHUB_ENV
-          env_file = os.environ.get('GITHUB_ENV')
-          if env_file:
-              with open(env_file, 'a', encoding='utf-8') as f:
-                  f.write(f'RESOLVED_MODE={mode}\n')
-          "
-
-      - name: Run Heartbeat Probes
-        env:
-          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-        run: |
-          python -c "
-          import urllib.request, json, os, sys
-
-          mode = os.environ.get('RESOLVED_MODE', 'METADATA_ONLY').strip().upper()
-          is_paid_execution = (mode == 'PAID_EXECUTION')
-          token = os.environ.get('APIFY_TOKEN', '').strip()
+          import urllib.request, json, sys
 
           actors = [
-              ('catalog-feed-normalizer', {'rawCsv': 'SKU,Title,Price\nHEARTBEAT-01,Heartbeat Product,10.00'}),
-              ('website-health-checker', {'startUrl': 'https://example.com', 'maxPages': 1}),
-              ('indian-public-tender-parser', {'raw_html': '<table><tr><td>Tender Ref: HB-01</td><td>Value: INR 10,000</td></tr></table>'}),
-              ('openrouter-mcp-registry', {'mode': 'mcp', 'free_only': True}),
-              ('store-catalog-redirect-extractor', {'platform': 'shopify', 'storeUrl': 'https://kith.com', 'maxPages': 1, 'pageSize': 1}),
-              ('domain-security-super-auditor', {'domains': ['example.com'], 'concurrency': 1})
+              'catalog-feed-normalizer',
+              'website-health-checker',
+              'indian-public-tender-parser',
+              'openrouter-mcp-registry',
+              'store-catalog-redirect-extractor',
+              'domain-security-super-auditor'
           ]
 
-          print('=== Apify B2B Super-Actors Availability Monitor ===')
-          print(f'Active Execution Mode: {mode}\n')
-
-          if is_paid_execution and not token:
-              print('[!] FATAL: APIFY_TOKEN repository secret is missing. Cannot execute paid Actor tests.', file=sys.stderr)
-              sys.exit(1)
+          print('=== Apify B2B Super-Actors Public Metadata Health Check ===')
+          print('Execution Mode: PERMANENTLY_METADATA_ONLY (Cost: $0.00, Auth: None)\n')
 
           success_count = 0
-          for slug, payload in actors:
+          for slug in actors:
               base_url = f'https://api.apify.com/v2/acts/deepaksheoran172~{slug}'
-              if is_paid_execution:
-                  run_url = f'{base_url}/runs?waitForFinish=60'
-                  req = urllib.request.Request(
-                      run_url,
-                      data=json.dumps(payload).encode('utf-8'),
-                      headers={
-                          'Content-Type': 'application/json',
-                          'Authorization': f'Bearer {token}',
-                          'User-Agent': 'ApifyHeartbeatMonitor/2.0'
-                      },
-                      method='POST'
-                  )
-              else:
-                  req = urllib.request.Request(
-                      base_url,
-                      headers={'User-Agent': 'ApifyHeartbeatMonitor/2.0'}
-                  )
+              req = urllib.request.Request(
+                  base_url,
+                  headers={'User-Agent': 'ApifyHeartbeatMonitor/3.0'}
+              )
 
               try:
                   with urllib.request.urlopen(req, timeout=90) as resp:
@@ -117,25 +51,16 @@ jobs:
                           continue
 
                       data = json.loads(resp.read().decode('utf-8'))
-                      if is_paid_execution:
-                          status = data.get('data', {}).get('status')
-                          run_id = data.get('data', {}).get('id', 'N/A')
-                          if status == 'SUCCEEDED':
-                              print(f'[+] {slug}: RUN_SUCCEEDED (Run ID: {run_id})')
-                              success_count += 1
-                          else:
-                              print(f'[-] {slug}: RUN_FAILED (Status: {status}, Run ID: {run_id})')
+                      actor_name = data.get('data', {}).get('name', '')
+                      if actor_name == slug:
+                          print(f'[+] {slug}: METADATA_ONLINE (Cost: $0.00, Execution: SKIPPED)')
+                          success_count += 1
                       else:
-                          actor_name = data.get('data', {}).get('name', '')
-                          if actor_name == slug:
-                              print(f'[+] {slug}: METADATA_ONLINE (Cost: $0.00, Execution: SKIPPED)')
-                              success_count += 1
-                          else:
-                              print(f'[-] {slug}: UNEXPECTED_METADATA_NAME (Got: {actor_name})')
+                          print(f'[-] {slug}: UNEXPECTED_METADATA_NAME (Got: {actor_name})')
               except Exception as e:
                   print(f'[-] {slug} check failed: {e}')
 
-          print(f'\nSummary: {success_count}/{len(actors)} verified in {mode} mode.')
+          print(f'\nSummary: {success_count}/{len(actors)} verified online.')
           if success_count < len(actors):
               sys.exit(1)
           "
