@@ -1,0 +1,64 @@
+name: Apify Store Cold-Start Heartbeat & Health Check
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Heartbeat Probes
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          python -c "
+          import urllib.request, json, os, sys
+
+          token = os.environ.get('APIFY_TOKEN')
+          if not token:
+              print('[!] APIFY_TOKEN secret not set in repo. Checking public Actor details instead.')
+
+          actors = [
+              ('catalog-feed-normalizer', {'rawCsv': 'SKU,Title,Price\nHEARTBEAT-01,Test Product,99.00'}),
+              ('website-health-checker', {'startUrl': 'https://example.com', 'maxPages': 1}),
+              ('indian-public-tender-parser', {'raw_html': '<table><tr><td>Tender Ref: HEARTBEAT-2026</td><td>Value: INR 1,00,000</td></tr></table>'}),
+              ('openrouter-mcp-registry', {'mode': 'mcp', 'free_only': True}),
+              ('store-catalog-redirect-extractor', {'platform': 'shopify', 'storeUrl': 'https://kith.com', 'maxPages': 1, 'pageSize': 1}),
+              ('domain-security-super-auditor', {'domains': ['example.com'], 'concurrency': 1})
+          ]
+
+          success_count = 0
+          for slug, payload in actors:
+              url = f'https://api.apify.com/v2/acts/deepaksheoran172~{slug}'
+              if token:
+                  run_url = f'{url}/runs?waitForFinish=60&token={token}'
+                  req = urllib.request.Request(
+                      run_url,
+                      data=json.dumps(payload).encode('utf-8'),
+                      headers={'Content-Type': 'application/json'},
+                      method='POST'
+                  )
+              else:
+                  req = urllib.request.Request(url, headers={'User-Agent': 'ApifyHeartbeat/1.0'})
+
+              try:
+                  with urllib.request.urlopen(req, timeout=90) as resp:
+                      data = json.loads(resp.read().decode('utf-8'))
+                      status = data.get('data', {}).get('status', 'OK') if token else 'PUBLIC_OK'
+                      print(f'[+] {slug}: {status}')
+                      success_count += 1
+              except Exception as e:
+                  print(f'[-] {slug} probe failed: {e}')
+
+          print(f'\nHeartbeat completed: {success_count}/{len(actors)} healthy.')
+          "
