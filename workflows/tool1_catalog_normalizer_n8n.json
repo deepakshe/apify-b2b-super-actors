@@ -1,0 +1,113 @@
+{
+  "name": "Apify Tool 1: Catalog Feed Normalizer B2B Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule-01",
+      "name": "Schedule Trigger (Daily)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "path": "run-catalog-feed-normalizer",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "trigger-webhook-02",
+      "name": "Webhook Trigger (On Demand)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        480
+      ],
+      "webhookId": "apify-catalog-feed-normalizer"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/deepaksheoran172~catalog-feed-normalizer/run-sync-get-dataset-items",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ={{ $env.APIFY_API_TOKEN || \"YOUR_APIFY_API_TOKEN\" }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"rawCsv\": \"SKU,Title,Price,Description,Inventory\\nPROD-001,Ergonomic Chair,299.00,Mesh office chair,50\\nPROD-002,Standing Desk,499.00,Motorized adjustable desk,25\",\n  \"defaultVendor\": \"ApexSupplier\",\n  \"defaultStatus\": \"active\"\n}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "http-apify-actor-03",
+      "name": "Run Apify catalog-feed-normalizer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        540,
+        380
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger (Daily)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify catalog-feed-normalizer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger (On Demand)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify catalog-feed-normalizer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "Apify"
+    },
+    {
+      "name": "B2B Automation"
+    },
+    {
+      "name": "Shopify Feed Normalization"
+    }
+  ]
+}

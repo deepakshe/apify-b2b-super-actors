@@ -1,0 +1,113 @@
+{
+  "name": "Apify Tool 3: India Public Tender Parser Intelligence",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule-01",
+      "name": "Schedule Trigger (Daily)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "path": "run-indian-public-tender-parser",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "trigger-webhook-02",
+      "name": "Webhook Trigger (On Demand)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        480
+      ],
+      "webhookId": "apify-indian-public-tender-parser"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/deepaksheoran172~indian-public-tender-parser/run-sync-get-dataset-items",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ={{ $env.APIFY_API_TOKEN || \"YOUR_APIFY_API_TOKEN\" }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"raw_html\": \"<div class=\\\"tender-card\\\"><h3>Tender Ref: GEM/2026/B/8912</h3><span class=\\\"amount\\\">INR 85,00,000</span><p class=\\\"due\\\">Submission Date: 2026-11-30</p></div>\",\n  \"portal_name\": \"gem\"\n}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "http-apify-actor-03",
+      "name": "Run Apify indian-public-tender-parser",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        540,
+        380
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger (Daily)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify indian-public-tender-parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger (On Demand)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify indian-public-tender-parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "Apify"
+    },
+    {
+      "name": "B2B Automation"
+    },
+    {
+      "name": "GovTech Procurement"
+    }
+  ]
+}

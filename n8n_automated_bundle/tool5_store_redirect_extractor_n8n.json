@@ -1,0 +1,113 @@
+{
+  "name": "Apify Tool 5: Store Catalog & 301 Redirect Extractor",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule-01",
+      "name": "Schedule Trigger (Daily)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "path": "run-store-catalog-redirect-extractor",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "trigger-webhook-02",
+      "name": "Webhook Trigger (On Demand)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        480
+      ],
+      "webhookId": "apify-store-catalog-redirect-extractor"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/deepaksheoran172~store-catalog-redirect-extractor/run-sync-get-dataset-items",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ={{ $env.APIFY_API_TOKEN || \"YOUR_APIFY_API_TOKEN\" }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"platform\": \"auto\",\n  \"storeUrl\": \"https://shop.gymshark.com\",\n  \"maxPages\": 10,\n  \"csvMode\": \"shopify_redirects\"\n}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "http-apify-actor-03",
+      "name": "Run Apify store-catalog-redirect-extractor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        540,
+        380
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger (Daily)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify store-catalog-redirect-extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger (On Demand)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify store-catalog-redirect-extractor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "Apify"
+    },
+    {
+      "name": "B2B Automation"
+    },
+    {
+      "name": "E-commerce Migrations"
+    }
+  ]
+}

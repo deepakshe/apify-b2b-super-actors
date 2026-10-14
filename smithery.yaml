@@ -1,0 +1,34 @@
+# Smithery MCP Server Configuration
+# https://smithery.ai/docs/config#smitheryyaml
+
+version: 1
+name: apify-b2b-super-actors
+displayName: "Apify B2B Super-Actors Suite"
+description: "6 Enterprise B2B Micro-Engines for Clay enrichment, n8n automated cron pipelines, and agentic AI (Claude & Cursor) on Apify Cloud."
+repository: "https://github.com/deepakshe/apify-b2b-super-actors"
+homepage: "https://apify.com/deepaksheoran172"
+license: "MIT"
+tags:
+  - apify
+  - mcp
+  - n8n
+  - clay
+  - b2b-automation
+  - ecommerce
+  - cybersecurity
+
+# Remote MCP Server endpoint hosted on Apify Cloud
+remote:
+  type: sse
+  url: "https://mcp.apify.com/?actors=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor"
+
+# Client configuration hints
+clients:
+  claudeDesktop:
+    mcpServers:
+      apify-b2b-suite:
+        command: "npx"
+        args:
+          - "-y"
+          - "@modelcontextprotocol/server-fetch"
+          - "https://mcp.apify.com/?actors=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor"

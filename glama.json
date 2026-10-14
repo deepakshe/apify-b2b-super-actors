@@ -1,0 +1,73 @@
+{
+  "$schema": "https://glama.ai/schemas/mcp-server-manifest.json",
+  "name": "apify-b2b-super-actors",
+  "title": "Apify B2B Super-Actors Suite",
+  "description": "Enterprise-grade B2B micro-engines on Apify Cloud for automated Clay outbound lead enrichment, n8n automated cron pipelines, and agentic AI tools (Claude Desktop / Cursor IDE).",
+  "author": {
+    "name": "Deepak Sheoran",
+    "url": "https://apify.com/deepaksheoran172",
+    "github": "https://github.com/deepakshe"
+  },
+  "homepage": "https://github.com/deepakshe/apify-b2b-super-actors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepakshe/apify-b2b-super-actors.git"
+  },
+  "license": "MIT",
+  "servers": [
+    {
+      "id": "catalog-feed-normalizer",
+      "name": "Shopify Catalog Feed Normalizer",
+      "description": "Converts messy supplier CSV feeds into RFC 4180 Shopify product import CSVs with automatic multi-variant grouping and formula protection.",
+      "url": "https://mcp.apify.com/?actors=deepaksheoran172/catalog-feed-normalizer",
+      "transport": "sse",
+      "categories": ["ecommerce", "data-pipelines"],
+      "pricing": "Pay-Per-Event ($0.001/run)"
+    },
+    {
+      "id": "website-health-checker",
+      "name": "Website Health & Broken Link Checker",
+      "description": "Detects broken links (404/500), broken images, and redirect loops with SSRF protection and deterministic health score.",
+      "url": "https://mcp.apify.com/?actors=deepaksheoran172/website-health-checker",
+      "transport": "sse",
+      "categories": ["seo", "monitoring"],
+      "pricing": "Pay-Per-Event ($0.001/run)"
+    },
+    {
+      "id": "indian-public-tender-parser",
+      "name": "India Public Tender & Procurement Intelligence Parser",
+      "description": "Parses unstructured Indian government tender notices (CPPP, GeM, State Portals) into structured JSON/CSV with ISO UTC dates and normalized INR financials.",
+      "url": "https://mcp.apify.com/?actors=deepaksheoran172/indian-public-tender-parser",
+      "transport": "sse",
+      "categories": ["govtech", "procurement"],
+      "pricing": "Pay-Per-Event ($0.001/run)"
+    },
+    {
+      "id": "openrouter-mcp-registry",
+      "name": "OpenRouter Models & MCP Tool Registry Index",
+      "description": "Queries real-time OpenRouter AI models pricing ($/1M tokens, free tiers) and curated Model Context Protocol (MCP) server tools registry.",
+      "url": "https://mcp.apify.com/?actors=deepaksheoran172/openrouter-mcp-registry",
+      "transport": "sse",
+      "categories": ["ai", "mcp-registry"],
+      "pricing": "Pay-Per-Event ($0.001/run)"
+    },
+    {
+      "id": "store-catalog-redirect-extractor",
+      "name": "Shopify & WooCommerce Catalog + 301 SEO Redirect Extractor",
+      "description": "Extracts complete Shopify/WooCommerce product catalogs and generates ready-to-import 301 redirect CSV mappings.",
+      "url": "https://mcp.apify.com/?actors=deepaksheoran172/store-catalog-redirect-extractor",
+      "transport": "sse",
+      "categories": ["ecommerce", "seo-migration"],
+      "pricing": "Pay-Per-Event ($0.001/run)"
+    },
+    {
+      "id": "domain-security-super-auditor",
+      "name": "Domain Security, SSL/TLS, Headers, DNS/DMARC & RDAP Auditor",
+      "description": "Audits SSL/TLS expiry, HSTS, security headers, SPF/DKIM/DMARC email deliverability, and RDAP registration in 1 asynchronous call.",
+      "url": "https://mcp.apify.com/?actors=deepaksheoran172/domain-security-super-auditor",
+      "transport": "sse",
+      "categories": ["cybersecurity", "lead-enrichment"],
+      "pricing": "Pay-Per-Event ($0.001/run)"
+    }
+  ]
+}
