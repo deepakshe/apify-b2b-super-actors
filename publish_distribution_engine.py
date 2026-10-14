@@ -76,7 +76,7 @@ def load_env_credentials() -> Tuple[Optional[str], Optional[str], Optional[str]]
                     if "=" in line:
                         k, v = line.split("=", 1)
                         k, v = k.strip(), v.strip().strip("'\"")
-                        if k and k not in os.environ:
+                        if k:
                             os.environ[k] = v
         except Exception as exc:
             print(f"[!] Warning reading .env: {exc}", file=sys.stderr)
