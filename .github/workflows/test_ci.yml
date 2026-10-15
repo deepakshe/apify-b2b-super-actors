@@ -1,0 +1,41 @@
+name: Apify Distribution Kit & Workflows CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate-distribution-kit:
+    name: Validate Distribution Schemas & Manifests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Run Repository Validation Suite
+        run: python validate_repair.py
+
+      - name: Verify All 7 n8n Workflows Are Valid JSON
+        run: |
+          python -c "
+          import json, glob, sys
+          files = glob.glob('workflows/*.json') + glob.glob('n8n_automated_bundle/*.json')
+          print(f'Checking {len(files)} workflow files...')
+          for f in files:
+              with open(f, 'r', encoding='utf-8') as fp:
+                  data = json.load(fp)
+                  assert 'nodes' in data, f'Missing nodes in {f}'
+                  print(f'[PASS] {f}')
+          print('All workflow JSON files verified!')
+          "

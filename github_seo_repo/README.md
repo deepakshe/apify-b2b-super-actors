@@ -1,9 +1,9 @@
-# B2B Automation & Data Infrastructure Suite: 6 Cloud Engines for Clay, n8n, Make & AI Agents
+# B2B Automation & Data Infrastructure Suite: 7 Cloud Engines for Clay, n8n, Make & AI Agents
 
 [![GitHub Stars](https://img.shields.io/github/stars/deepaksheoran172/apify-b2b-automation-suite?style=social)](https://github.com/deepaksheoran172)
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Portfolio%20Verified-blue?logo=apify)](https://apify.com/deepaksheoran172)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![MCP Ready](https://img.shields.io/badge/Model%20Context%20Protocol-Compatible-purple)](https://mcp.apify.com/?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor)
+[![MCP Ready](https://img.shields.io/badge/Model%20Context%20Protocol-Compatible-purple)](https://mcp.apify.com/?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor,deepaksheoran172/domain-protocol-signals-enricher)
 
 Serverless data micro-engines designed for **B2B outbound operations**, **Clay enrichment tables**, **n8n automated cron pipelines**, and **autonomous AI agents (Claude Desktop / Cursor IDE)**.
 
@@ -11,7 +11,7 @@ Serverless data micro-engines designed for **B2B outbound operations**, **Clay e
 
 ---
 
-## 🚀 The 6 Production Engines
+## 🚀 The 7 Production Engines
 
 | # | Engine & Slug | High-Intent Keyword Target | Apify Store Link | n8n Workflow |
 |---|---|---|---|---|
@@ -21,6 +21,7 @@ Serverless data micro-engines designed for **B2B outbound operations**, **Clay e
 | **4** | **OpenRouter Models & MCP Tool Registry**<br/>`openrouter-mcp-registry` | `openrouter-mcp`, `ai-model-pricing-index` | [View Actor ➔](https://apify.com/deepaksheoran172/openrouter-mcp-registry) | [`tool4_openrouter_mcp_registry_n8n.json`](../n8n_automated_bundle/tool4_openrouter_mcp_registry_n8n.json) |
 | **5** | **Store Catalog & 301 Redirect Extractor**<br/>`store-catalog-redirect-extractor` | `woocommerce-migration`, `shopify-301-redirect-map` | [View Actor ➔](https://apify.com/deepaksheoran172/store-catalog-redirect-extractor) | [`tool5_store_redirect_extractor_n8n.json`](../n8n_automated_bundle/tool5_store_redirect_extractor_n8n.json) |
 | **6** | **Domain Security Super-Auditor**<br/>`domain-security-super-auditor` | `enterprise-ssl-audit`, `clay-enrichment`, `dmarc-scorecard` | [View Actor ➔](https://apify.com/deepaksheoran172/domain-security-super-auditor) | [`tool6_domain_security_auditor_n8n.json`](../n8n_automated_bundle/tool6_domain_security_auditor_n8n.json) |
+| **7** | **Domain Protocol & App Link Signals Enricher**<br/>`domain-protocol-signals-enricher` | `android-assetlinks`, `ios-aasa`, `security-txt`, `mta-sts` | [View Actor ➔](https://apify.com/deepaksheoran172/domain-protocol-signals-enricher) | [`tool7_domain_protocol_enricher_n8n.json`](../workflows/tool7_domain_protocol_enricher_n8n.json) |
 
 ---
 
@@ -63,7 +64,7 @@ Connect to Apify's official remote MCP endpoint (`mcp.apify.com`) using Streamab
 {
   "mcpServers": {
     "apify-b2b-suite": {
-      "url": "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor",
+      "url": "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor,deepaksheoran172/domain-protocol-signals-enricher",
       "headers": {
         "Authorization": "Bearer YOUR_APIFY_TOKEN"
       }
@@ -81,7 +82,7 @@ Connect to Apify's official remote MCP endpoint (`mcp.apify.com`) using Streamab
       "args": [
         "-y",
         "mcp-remote",
-        "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor"
+        "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor,deepaksheoran172/domain-protocol-signals-enricher"
       ],
       "env": {
         "APIFY_TOKEN": "YOUR_APIFY_TOKEN"
@@ -117,7 +118,8 @@ These micro-engines operate under Apify's Pay-Per-Event (PPE) model:
 │   ├── tool3_tender_parser_n8n.json
 │   ├── tool4_openrouter_mcp_registry_n8n.json
 │   ├── tool5_store_redirect_extractor_n8n.json
-│   └── tool6_domain_security_auditor_n8n.json
+│   ├── tool6_domain_security_auditor_n8n.json
+│   └── tool7_domain_protocol_enricher_n8n.json
 └── mcp/                               # Directory Submission Manifests
     └── mcp_directory_submission.json
 ```

@@ -2,13 +2,13 @@ name: Apify B2B Super-Actors Heartbeat & Metadata Health Check
 
 on:
   schedule:
-    # Weekly on Mondays at 06:00 UTC (Permanently Zero-Cost Public Metadata Health Check)
-    - cron: '0 6 * * 1'
+    # Run routine checks every 6 hours (00:00, 06:00, 12:00, 18:00 UTC)
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
   heartbeat:
-    name: Probe Actor Availability
+    name: Probe Actor Availability & Metadata (Read-Only)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -19,48 +19,85 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run Metadata Health Checks
+      - name: Run 7-Actor Metadata Health Checks
         run: |
           python -c "
-          import urllib.request, json, sys
+          import urllib.request, json, sys, os
+          from datetime import datetime, timezone
 
           actors = [
-              'catalog-feed-normalizer',
-              'website-health-checker',
-              'indian-public-tender-parser',
-              'openrouter-mcp-registry',
-              'store-catalog-redirect-extractor',
-              'domain-security-super-auditor'
+              {'slug': 'store-catalog-redirect-extractor', 'expected_id': 'ZPRZmU1mNZNJ950Xo'},
+              {'slug': 'domain-security-super-auditor', 'expected_id': '4QWzBonorciexxFc3'},
+              {'slug': 'catalog-feed-normalizer', 'expected_id': '3RSgUjqJxd7SkycfH'},
+              {'slug': 'website-health-checker', 'expected_id': 'MQ4wt5sZNzo1YBAAH'},
+              {'slug': 'indian-public-tender-parser', 'expected_id': 'qVsV97mUeFQtQFWp1'},
+              {'slug': 'openrouter-mcp-registry', 'expected_id': 'jwu7PurBv0MV2JU1s'},
+              {'slug': 'domain-protocol-signals-enricher', 'expected_id': 'CIKmCOHKazs1gmzO9'}
           ]
 
           print('=== Apify B2B Super-Actors Public Metadata Health Check ===')
-          print('Execution Mode: PERMANENTLY_METADATA_ONLY (Cost: $0.00, Auth: None)\n')
+          print('Execution Mode: READ_ONLY_METADATA (Cost: $0.00, Auth: None)')
+          print(f'Timestamp UTC: {datetime.now(timezone.utc).isoformat()}\n')
 
+          results = []
           success_count = 0
-          for slug in actors:
+
+          for item in actors:
+              slug = item['slug']
+              exp_id = item['expected_id']
               base_url = f'https://api.apify.com/v2/acts/deepaksheoran172~{slug}'
               req = urllib.request.Request(
                   base_url,
-                  headers={'User-Agent': 'ApifyHeartbeatMonitor/3.0'}
+                  headers={'User-Agent': 'ApifyHeartbeatMonitor/4.0 (Autonomous)'}
               )
 
+              record = {'slug': slug, 'expected_id': exp_id, 'verified': False}
               try:
-                  with urllib.request.urlopen(req, timeout=90) as resp:
+                  with urllib.request.urlopen(req, timeout=30) as resp:
                       if resp.status != 200:
                           print(f'[-] {slug}: HTTP_{resp.status}_ERROR')
+                          record['error'] = f'HTTP {resp.status}'
+                          results.append(record)
                           continue
 
-                      data = json.loads(resp.read().decode('utf-8'))
-                      actor_name = data.get('data', {}).get('name', '')
-                      if actor_name == slug:
+                      raw = resp.read().decode('utf-8')
+                      payload = json.loads(raw)
+                      data = payload.get('data', {})
+                      act_name = data.get('name', '')
+                      act_id = data.get('id', '')
+                      is_pub = data.get('isPublic', False)
+
+                      # Validate stable identifier and public availability
+                      if act_id == exp_id and act_name == slug and is_pub:
                           print(f'[+] {slug}: METADATA_ONLINE (Cost: $0.00, Execution: SKIPPED)')
+                          record['verified'] = True
+                          record['actual_id'] = act_id
+                          record['is_public'] = is_pub
+                          record['title'] = data.get('title', '')
                           success_count += 1
                       else:
-                          print(f'[-] {slug}: UNEXPECTED_METADATA_NAME (Got: {actor_name})')
+                          err = f'ID_OR_NAME_MISMATCH (Expected ID: {exp_id}, Got: {act_id}; Name: {act_name})'
+                          print(f'[-] {slug}: {err}')
+                          record['error'] = err
               except Exception as e:
                   print(f'[-] {slug} check failed: {e}')
+                  record['error'] = str(e)
+              results.append(record)
 
-          print(f'\nSummary: {success_count}/{len(actors)} verified online.')
+          # Output machine-readable summary
+          output_dir = 'build_reports'
+          os.makedirs(output_dir, exist_ok=True)
+          with open(os.path.join(output_dir, 'heartbeat_result.json'), 'w', encoding='utf-8') as f:
+              json.dump({'timestamp': datetime.now(timezone.utc).isoformat(), 'success_count': success_count, 'total': len(actors), 'results': results}, f, indent=2)
+
+          print(f'\nSummary: {success_count}/{len(actors)} verified online and valid.')
           if success_count < len(actors):
               sys.exit(1)
           "
+
+      - name: Upload Health Check Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: heartbeat-health-result
+          path: build_reports/heartbeat_result.json

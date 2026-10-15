@@ -1,4 +1,4 @@
-# Apify B2B Super-Actors: 6 Enterprise Cloud Engines for Clay, n8n, Make & AI Agents
+# Apify B2B Super-Actors: 7 Enterprise Cloud Engines for Clay, n8n, Make & AI Agents
 
 [![GitHub Stars](https://img.shields.io/github/stars/deepakshe/apify-b2b-super-actors?style=social)](https://github.com/deepakshe/apify-b2b-super-actors)
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Portfolio%20Verified-blue?logo=apify)](https://apify.com/deepaksheoran172)
@@ -22,6 +22,7 @@ Serverless data micro-engines designed for **B2B outbound operations**, **Clay e
 | **AI Model Pricing & MCP Index** | Proprietary AI Gateways | $250 / mo | `openrouter-mcp-registry` | **$0.01 / sync** + $0.001 / model detail |
 | **Store Migration & 301 Redirects** | Cart2Cart / LitExtension | $150 – $499 / run | `store-catalog-redirect-extractor` | **$0.05 / extraction** + $0.001 / product exported |
 | **Cybersecurity & DMARC Audits** | UpGuard / SecurityScorecard | $300 – $800 / mo | `domain-security-super-auditor` | **$0.001 / audit** + $0.001 / enrichment |
+| **Domain Protocol & App Link Signals** | Custom scrapers / enterprise intel | $150 – $300 / mo | `domain-protocol-signals-enricher` | **$0.001 / domain** |
 
 ---
 
@@ -37,7 +38,7 @@ These micro-engines operate under Apify's Pay-Per-Event (PPE) model:
 
 ---
 
-## 🚀 The 6 Production Engines & 1-Click n8n Import URLs
+## 🚀 The 7 Production Engines & 1-Click n8n Import URLs
 
 Each workflow is pre-wired to Apify's synchronous execution endpoint (`https://api.apify.com/v2/acts/deepaksheoran172~<slug>/run-sync-get-dataset-items`).
 
@@ -49,6 +50,7 @@ Each workflow is pre-wired to Apify's synchronous execution endpoint (`https://a
 | **4** | **OpenRouter Models & MCP Tool Registry** | `openrouter-mcp-registry` | [View Store Page ➔](https://apify.com/deepaksheoran172/openrouter-mcp-registry) | [Raw n8n JSON](https://raw.githubusercontent.com/deepakshe/apify-b2b-super-actors/main/workflows/tool4_openrouter_mcp_registry_n8n.json) |
 | **5** | **Store Catalog & 301 Redirect Extractor** | `store-catalog-redirect-extractor` | [View Store Page ➔](https://apify.com/deepaksheoran172/store-catalog-redirect-extractor) | [Raw n8n JSON](https://raw.githubusercontent.com/deepakshe/apify-b2b-super-actors/main/workflows/tool5_store_redirect_extractor_n8n.json) |
 | **6** | **Domain Security Super-Auditor** | `domain-security-super-auditor` | [View Store Page ➔](https://apify.com/deepaksheoran172/domain-security-super-auditor) | [Raw n8n JSON](https://raw.githubusercontent.com/deepakshe/apify-b2b-super-actors/main/workflows/tool6_domain_security_auditor_n8n.json) |
+| **7** | **Domain Protocol & App Link Signals Enricher** | `domain-protocol-signals-enricher` | [View Store Page ➔](https://apify.com/deepaksheoran172/domain-protocol-signals-enricher) | [Raw n8n JSON](https://raw.githubusercontent.com/deepakshe/apify-b2b-super-actors/main/workflows/tool7_domain_protocol_enricher_n8n.json) |
 
 ---
 
@@ -92,7 +94,7 @@ Add to your client configuration:
 {
   "mcpServers": {
     "apify-b2b-suite": {
-      "url": "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor",
+      "url": "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor,deepaksheoran172/domain-protocol-signals-enricher",
       "headers": {
         "Authorization": "Bearer YOUR_APIFY_TOKEN"
       }
@@ -110,7 +112,7 @@ Add to your client configuration:
       "args": [
         "-y",
         "mcp-remote",
-        "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor"
+        "https://mcp.apify.com?tools=deepaksheoran172/catalog-feed-normalizer,deepaksheoran172/website-health-checker,deepaksheoran172/indian-public-tender-parser,deepaksheoran172/openrouter-mcp-registry,deepaksheoran172/store-catalog-redirect-extractor,deepaksheoran172/domain-security-super-auditor,deepaksheoran172/domain-protocol-signals-enricher"
       ],
       "env": {
         "APIFY_TOKEN": "YOUR_APIFY_TOKEN"
@@ -133,13 +135,14 @@ Add to your client configuration:
 ├── glama.json                         # Glama.ai MCP Server Verification Manifest
 ├── smithery.yaml                      # Smithery.ai Remote HTTP MCP Configuration
 ├── LICENSE                            # MIT License
-├── workflows/                         # 6 Pre-wired n8n Automation Workflows
+├── workflows/                         # 7 Pre-wired n8n Automation Workflows
 │   ├── tool1_catalog_normalizer_n8n.json
 │   ├── tool2_website_health_checker_n8n.json
 │   ├── tool3_tender_parser_n8n.json
 │   ├── tool4_openrouter_mcp_registry_n8n.json
 │   ├── tool5_store_redirect_extractor_n8n.json
-│   └── tool6_domain_security_auditor_n8n.json
+│   ├── tool6_domain_security_auditor_n8n.json
+│   └── tool7_domain_protocol_enricher_n8n.json
 └── mcp/                               # Directory Submission Manifests
     └── mcp_directory_submission.json
 ```

@@ -1,0 +1,141 @@
+{
+  "actors": [
+    {
+      "actorId": "3RSgUjqJxd7SkycfH",
+      "slug": "catalog-feed-normalizer",
+      "title": "Shopify Catalog Feed Normalizer (RFC 4180 Clean CSV)",
+      "searchDescription": "Convert messy supplier CSV feeds into RFC 4180 Shopify product import CSVs with automatic multi-variant grouping and formula protection.",
+      "category": "E-Commerce & Data Pipelines",
+      "keywords": [
+        "shopify catalog csv import cleaner",
+        "csv feed normalizer api",
+        "dropshipping product importer clean",
+        "shopify variant grouping automation",
+        "rfc 4180 csv validator shopify",
+        "google merchant center feed normalizer",
+        "matrixify alternative pay per run"
+      ],
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingRate": "$0.05 / run + $0.0005 / item normalized",
+      "storeUrl": "https://apify.com/deepaksheoran172/catalog-feed-normalizer",
+      "mcpUrl": "https://mcp.apify.com/?tools=deepaksheoran172/catalog-feed-normalizer"
+    },
+    {
+      "actorId": "MQ4wt5sZNzo1YBAAH",
+      "slug": "website-health-checker",
+      "title": "Bulk Website Health, 404 Broken Link & SEO Technical Auditor",
+      "searchDescription": "High-speed bulk website health checker, HTTP status verifier, 404 broken link detector, and meta/canonical SEO auditor for B2B lead enrichment in Clay and n8n.",
+      "category": "SEO & Lead Quality",
+      "keywords": [
+        "bulk 404 broken link checker api",
+        "website health checker clay",
+        "screaming frog cloud alternative",
+        "bulk http status code validator",
+        "expired domain redirect detector",
+        "lead list dead website filter"
+      ],
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingRate": "$0.001 / check + $0.002 / deep page audit",
+      "storeUrl": "https://apify.com/deepaksheoran172/website-health-checker",
+      "mcpUrl": "https://mcp.apify.com/?tools=deepaksheoran172/website-health-checker"
+    },
+    {
+      "actorId": "qVsV97mUeFQtQFWp1",
+      "slug": "indian-public-tender-parser",
+      "title": "India Public Tender, GeM & CPPP eProcurement Parser",
+      "searchDescription": "Automated Indian government tender scraper and parser for CPPP, GeM, and state eProcurement portals. Extracts EMD, BOQ, deadlines, and corrigendums into clean JSON for B2B bidding.",
+      "category": "GovTech & B2B Procurement",
+      "keywords": [
+        "gem portal tender scraper api",
+        "cppp government tender parser",
+        "india eprocurement tender alert automation",
+        "tender247 alternative pay per query",
+        "gem boq emd extractor",
+        "eprocure gov in automated scraper"
+      ],
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingRate": "$0.02 / query + $0.005 / record parsed",
+      "storeUrl": "https://apify.com/deepaksheoran172/indian-public-tender-parser",
+      "mcpUrl": "https://mcp.apify.com/?tools=deepaksheoran172/indian-public-tender-parser"
+    },
+    {
+      "actorId": "jwu7PurBv0MV2JU1s",
+      "slug": "openrouter-mcp-registry",
+      "title": "OpenRouter LLM Pricing & AI MCP Server Registry Scraper",
+      "searchDescription": "Live index of OpenRouter LLM token pricing, context windows, and Model Context Protocol (MCP) servers. Built for AI FinOps, model routing, and agentic tool discovery.",
+      "category": "AI FinOps & Agent Tools",
+      "keywords": [
+        "openrouter model pricing api",
+        "mcp tool server directory live",
+        "model context protocol registry scraper",
+        "llm token cost comparator api",
+        "cursor mcp tools list streamable http",
+        "openrouter context window limits"
+      ],
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingRate": "$0.01 / sync + $0.001 / model detail",
+      "storeUrl": "https://apify.com/deepaksheoran172/openrouter-mcp-registry",
+      "mcpUrl": "https://mcp.apify.com/?tools=deepaksheoran172/openrouter-mcp-registry"
+    },
+    {
+      "actorId": "ZPRZmU1mNZNJ950Xo",
+      "slug": "store-catalog-redirect-extractor",
+      "title": "Store Catalog & 301 Redirect Extractor (Shopify & WooCommerce)",
+      "searchDescription": "Extracts store product catalogs and builds automated 301 URL redirect CSV mappings to preserve Google organic search rankings during platform migrations.",
+      "category": "E-Commerce Migration & SEO",
+      "keywords": [
+        "woocommerce to shopify redirect generator",
+        "cart2cart alternative pay per extraction",
+        "litextension lightweight alternative",
+        "bulk 301 redirect map csv e-commerce",
+        "shopify product url redirect extractor",
+        "store migration seo preservation tool"
+      ],
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingRate": "$0.05 / extraction + $0.001 / product exported",
+      "storeUrl": "https://apify.com/deepaksheoran172/store-catalog-redirect-extractor",
+      "mcpUrl": "https://mcp.apify.com/?tools=deepaksheoran172/store-catalog-redirect-extractor"
+    },
+    {
+      "actorId": "4QWzBonorciexxFc3",
+      "slug": "domain-security-super-auditor",
+      "title": "Bulk Domain Security, SSL/TLS, Headers & DMARC Auditor",
+      "searchDescription": "Audits SSL/TLS certificates, security headers, SPF recursive lookups (RFC 7208 10-lookup limit), DMARC policy enforcement, and RDAP domain age in 1 call.",
+      "category": "Cybersecurity & Outbound Compliance",
+      "keywords": [
+        "bulk dmarc spf checker api",
+        "google yahoo bulk sender compliance auditor",
+        "ssl certificate expiry alert api",
+        "upguard alternative b2b lead score",
+        "clay domain risk score enrichment",
+        "rdap burner domain age detector"
+      ],
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingRate": "$0.001 / audit + $0.001 / enrichment",
+      "storeUrl": "https://apify.com/deepaksheoran172/domain-security-super-auditor",
+      "mcpUrl": "https://mcp.apify.com/?tools=deepaksheoran172/domain-security-super-auditor"
+    },
+    {
+      "actorId": "domain-protocol-signals-enricher",
+      "slug": "domain-protocol-signals-enricher",
+      "title": "Domain Protocol & App Link Signals Enricher",
+      "searchDescription": "Extract evidence-backed B2B signals from public domain endpoints: Android assetlinks.json, iOS AASA, OIDC discovery, RFC 9116 security.txt, RFC 8461 mta-sts.txt, and /llms.txt.",
+      "category": "B2B Outbound & Signal Enrichment",
+      "keywords": [
+        "android assetlinks extractor api",
+        "ios aasa universal links scraper",
+        "rfc 9116 security txt checker",
+        "mta-sts policy scanner api",
+        "b2b domain signal enrichment",
+        "clay outbound mobile tech stack",
+        "llms txt crawler api",
+        "apple merchant domain association"
+      ],
+      "pricingModel": "PAY_PER_EVENT",
+      "pricingRate": "$0.001 / domain",
+      "storeUrl": "https://apify.com/deepaksheoran172/domain-protocol-signals-enricher",
+      "mcpUrl": "https://mcp.apify.com/?tools=deepaksheoran172/domain-protocol-signals-enricher"
+    }
+  ],
+  "generated_at": "2026-10-15T00:00:00Z"
+}

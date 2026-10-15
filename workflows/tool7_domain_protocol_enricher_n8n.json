@@ -1,0 +1,113 @@
+{
+  "name": "Apify Tool 7: Domain Well-Known Protocol & App Link Signals Enricher",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule-01",
+      "name": "Schedule Trigger (Daily)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "path": "run-domain-protocol-signals-enricher",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "trigger-webhook-02",
+      "name": "Webhook Trigger (On Demand)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        480
+      ],
+      "webhookId": "apify-domain-protocol-signals-enricher"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/deepaksheoran172~domain-protocol-signals-enricher/run-sync-get-dataset-items",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ={{ $env.APIFY_API_TOKEN || \"YOUR_APIFY_API_TOKEN\" }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"domains\": [\n    \"stripe.com\",\n    \"shopify.com\"\n  ],\n  \"probe_app_links\": true,\n  \"probe_identity_metadata\": true,\n  \"probe_security_policies\": true,\n  \"probe_domain_files\": true,\n  \"concurrency\": 5,\n  \"request_timeout_secs\": 10\n}",
+        "options": {
+          "timeout": 180000
+        }
+      },
+      "id": "http-apify-actor-03",
+      "name": "Run Apify domain-protocol-signals-enricher",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        540,
+        380
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger (Daily)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify domain-protocol-signals-enricher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Trigger (On Demand)": {
+      "main": [
+        [
+          {
+            "node": "Run Apify domain-protocol-signals-enricher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "Apify"
+    },
+    {
+      "name": "B2B Automation"
+    },
+    {
+      "name": "Signal Enrichment & Deep Linking"
+    }
+  ]
+}

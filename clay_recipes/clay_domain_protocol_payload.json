@@ -1,0 +1,11 @@
+{
+  "domains": [
+    "{{v.Domain}}"
+  ],
+  "probe_app_links": true,
+  "probe_identity_metadata": true,
+  "probe_security_policies": true,
+  "probe_domain_files": true,
+  "concurrency": 5,
+  "request_timeout_secs": 10
+}

@@ -111,7 +111,7 @@ def run_tests():
     with open(workflow_path, "r", encoding="utf-8") as f:
         hb_content = f.read()
 
-    assert "cron: '0 6 * * 1'" in hb_content, "Weekly schedule must run cron: '0 6 * * 1'"
+    assert "cron: '0 */6 * * *'" in hb_content, "Routine schedule must run cron: '0 */6 * * *'"
     assert "METADATA_ONLINE (Cost: $0.00, Execution: SKIPPED)" in hb_content, "Missing clear metadata status label!"
     assert "APIFY_TOKEN" not in hb_content, "Security breach: APIFY_TOKEN must not exist in heartbeat workflow!"
     assert "/runs" not in hb_content, "Safety breach: POST /runs must not exist in heartbeat workflow!"
@@ -132,7 +132,8 @@ def run_tests():
         "$0.02 / query",
         "$0.01 / sync",
         "$0.05 / extraction",
-        "$0.001 / audit"
+        "$0.001 / audit",
+        "$0.001 / domain"
     ]
     all_prices_found = all(price in readme_content for price in expected_prices)
     if all_prices_found:

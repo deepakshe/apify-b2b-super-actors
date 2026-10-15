@@ -1,0 +1,110 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Shopify Catalog Feed Normalizer (RFC 4180 Clean CSV)",
+      "operatingSystem": "Cloud / Docker",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.001",
+        "priceCurrency": "USD",
+        "description": "$0.05 / run + $0.0005 / item normalized"
+      },
+      "description": "Convert messy supplier CSV feeds into RFC 4180 Shopify product import CSVs with automatic multi-variant grouping and formula protection.",
+      "url": "https://apify.com/deepaksheoran172/catalog-feed-normalizer",
+      "keywords": "shopify catalog csv import cleaner, csv feed normalizer api, dropshipping product importer clean, shopify variant grouping automation, rfc 4180 csv validator shopify, google merchant center feed normalizer, matrixify alternative pay per run"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Bulk Website Health, 404 Broken Link & SEO Technical Auditor",
+      "operatingSystem": "Cloud / Docker",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.001",
+        "priceCurrency": "USD",
+        "description": "$0.001 / check + $0.002 / deep page audit"
+      },
+      "description": "High-speed bulk website health checker, HTTP status verifier, 404 broken link detector, and meta/canonical SEO auditor for B2B lead enrichment in Clay and n8n.",
+      "url": "https://apify.com/deepaksheoran172/website-health-checker",
+      "keywords": "bulk 404 broken link checker api, website health checker clay, screaming frog cloud alternative, bulk http status code validator, expired domain redirect detector, lead list dead website filter"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "India Public Tender, GeM & CPPP eProcurement Parser",
+      "operatingSystem": "Cloud / Docker",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.001",
+        "priceCurrency": "USD",
+        "description": "$0.02 / query + $0.005 / record parsed"
+      },
+      "description": "Automated Indian government tender scraper and parser for CPPP, GeM, and state eProcurement portals. Extracts EMD, BOQ, deadlines, and corrigendums into clean JSON for B2B bidding.",
+      "url": "https://apify.com/deepaksheoran172/indian-public-tender-parser",
+      "keywords": "gem portal tender scraper api, cppp government tender parser, india eprocurement tender alert automation, tender247 alternative pay per query, gem boq emd extractor, eprocure gov in automated scraper"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "OpenRouter LLM Pricing & AI MCP Server Registry Scraper",
+      "operatingSystem": "Cloud / Docker",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.001",
+        "priceCurrency": "USD",
+        "description": "$0.01 / sync + $0.001 / model detail"
+      },
+      "description": "Live index of OpenRouter LLM token pricing, context windows, and Model Context Protocol (MCP) servers. Built for AI FinOps, model routing, and agentic tool discovery.",
+      "url": "https://apify.com/deepaksheoran172/openrouter-mcp-registry",
+      "keywords": "openrouter model pricing api, mcp tool server directory live, model context protocol registry scraper, llm token cost comparator api, cursor mcp tools list streamable http, openrouter context window limits"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Store Catalog & 301 Redirect Extractor (Shopify & WooCommerce)",
+      "operatingSystem": "Cloud / Docker",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.001",
+        "priceCurrency": "USD",
+        "description": "$0.05 / extraction + $0.001 / product exported"
+      },
+      "description": "Extracts store product catalogs and builds automated 301 URL redirect CSV mappings to preserve Google organic search rankings during platform migrations.",
+      "url": "https://apify.com/deepaksheoran172/store-catalog-redirect-extractor",
+      "keywords": "woocommerce to shopify redirect generator, cart2cart alternative pay per extraction, litextension lightweight alternative, bulk 301 redirect map csv e-commerce, shopify product url redirect extractor, store migration seo preservation tool"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Bulk Domain Security, SSL/TLS, Headers & DMARC Auditor",
+      "operatingSystem": "Cloud / Docker",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.001",
+        "priceCurrency": "USD",
+        "description": "$0.001 / audit + $0.001 / enrichment"
+      },
+      "description": "Audits SSL/TLS certificates, security headers, SPF recursive lookups (RFC 7208 10-lookup limit), DMARC policy enforcement, and RDAP domain age in 1 call.",
+      "url": "https://apify.com/deepaksheoran172/domain-security-super-auditor",
+      "keywords": "bulk dmarc spf checker api, google yahoo bulk sender compliance auditor, ssl certificate expiry alert api, upguard alternative b2b lead score, clay domain risk score enrichment, rdap burner domain age detector"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Domain Protocol & App Link Signals Enricher",
+      "operatingSystem": "Cloud / Docker",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.001",
+        "priceCurrency": "USD",
+        "description": "$0.001 / domain"
+      },
+      "description": "Extract evidence-backed B2B signals from public domain endpoints: Android assetlinks.json, iOS AASA, OIDC discovery, RFC 9116 security.txt, RFC 8461 mta-sts.txt, and /llms.txt.",
+      "url": "https://apify.com/deepaksheoran172/domain-protocol-signals-enricher",
+      "keywords": "android assetlinks extractor api, ios aasa universal links scraper, rfc 9116 security txt checker, mta-sts policy scanner api, b2b domain signal enrichment, clay outbound mobile tech stack, llms txt crawler api, apple merchant domain association"
+    }
+  ]
+}

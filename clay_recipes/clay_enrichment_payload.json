@@ -1,0 +1,22 @@
+{
+  "actor_id": "4QWzBonorciexxFc3",
+  "actor_slug": "deepaksheoran172/domain-security-super-auditor",
+  "store_url": "https://apify.com/deepaksheoran172/domain-security-super-auditor",
+  "integration_target": "clay.com",
+  "action": "run_actor_sync",
+  "input_template": {
+    "domains": [
+      "{{v.Domain}}"
+    ],
+    "include_dns_deliverability": true,
+    "include_rdap_age": true,
+    "include_http_headers": true
+  },
+  "column_mappings": {
+    "composite_risk_score": "Clay: Number (0-100)",
+    "dmarc_policy": "Clay: Text ('none' | 'quarantine' | 'reject')",
+    "spf_recursive_lookups": "Clay: Number (<= 10 is safe)",
+    "ssl_days_remaining": "Clay: Number (> 30 days safe)",
+    "rdap_age_days": "Clay: Number (> 30 days established)"
+  }
+}
