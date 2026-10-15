@@ -36,7 +36,7 @@ jobs:
           ]
 
           print('=== Apify B2B Super-Actors Public Metadata Health Check ===')
-          print('Execution Mode: READ_ONLY_METADATA (Cost: $0.00, Auth: None)')
+          print('Execution Mode: READ_ONLY_METADATA (Cost: \$0.00, Auth: None)')
           print(f'Timestamp UTC: {datetime.now(timezone.utc).isoformat()}\n')
 
           results = []
@@ -67,9 +67,9 @@ jobs:
                       act_id = data.get('id', '')
                       is_pub = data.get('isPublic', False)
 
-                      # Validate stable identifier and public availability
+                      # Validate stable identifier and public availability (Cost: $0.00, Execution: SKIPPED)
                       if act_id == exp_id and act_name == slug and is_pub:
-                          print(f'[+] {slug}: METADATA_ONLINE (Cost: $0.00, Execution: SKIPPED)')
+                          print(f'[+] {slug}: METADATA_ONLINE (Cost: \$0.00, Execution: SKIPPED)')
                           record['verified'] = True
                           record['actual_id'] = act_id
                           record['is_public'] = is_pub
