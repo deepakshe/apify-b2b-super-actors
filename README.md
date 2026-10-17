@@ -18,13 +18,13 @@ Serverless data micro-engines designed for **B2B outbound operations**, **Clay e
 
 | Capability / Workflow | Manual Agency / Legacy SaaS Cost | Verified Live Apify PPE Rate | Effective Value & Savings | 10-Row Empirical Teaser Proof |
 |---|---|---|---|---|
-| **Store Migration & 301 Redirects** | $250.00 / migration | **$0.05 base + $0.001 / item** | **Save 99.6%** vs Manual Agency | [`store-catalog-redirect-extractor`](docs/actors/store-catalog-redirect-extractor.md) |
-| **Cybersecurity & DMARC Audits** | $180.00 / audit | **$0.001 / domain** ($1.00 / 1k) | **Save 99.4%** vs Consultant | [`domain-security-super-auditor`](docs/actors/domain-security-super-auditor.md) |
-| **E-Commerce Feed Normalization** | $200.00 / cleanup | **$0.05 base + $0.0005 / item** | **Save 99.7%** vs Contractor | [`catalog-feed-normalizer`](docs/actors/catalog-feed-normalizer.md) |
-| **Site Health & 404 Auditing** | $199.00 / mo SaaS | **$0.001 / page** ($1.00 / 1k) | **Save 99.5%** vs Monthly Retainer | [`website-health-checker`](docs/actors/website-health-checker.md) |
-| **GovTech Tender Intelligence** | ₹50,000 / yr portal | **$0.02 base + $0.005 / record** | **Save 99.0%** vs Annual Contract | [`indian-public-tender-parser`](docs/actors/indian-public-tender-parser.md) |
-| **AI Model Pricing & MCP Index** | $150.00 / gateway setup | **$0.01 base + $0.001 / model** | **Save 99.8%** vs Gateway Ops | [`openrouter-mcp-registry`](docs/actors/openrouter-mcp-registry.md) |
-| **Domain Protocol & App Links** | $160.00 / audit | **$0.001 / domain** ($1.00 / 1k) | **Save 99.4%** vs Manual QA | [`domain-protocol-signals-enricher`](docs/actors/domain-protocol-signals-enricher.md) |
+| **Store Migration & 301 Redirects** | $250.00 / migration | **$0.05 / extraction** + $0.001 / product | **Save 99.6%** vs Manual Agency | [`store-catalog-redirect-extractor`](docs/actors/store-catalog-redirect-extractor.md) |
+| **Cybersecurity & DMARC Audits** | $180.00 / audit | **$0.001 / audit** + $0.001 / domain | **Save 99.4%** vs Consultant | [`domain-security-super-auditor`](docs/actors/domain-security-super-auditor.md) |
+| **E-Commerce Feed Normalization** | $200.00 / cleanup | **$0.05 / run** + $0.0005 / item normalized | **Save 99.7%** vs Contractor | [`catalog-feed-normalizer`](docs/actors/catalog-feed-normalizer.md) |
+| **Site Health & 404 Auditing** | $199.00 / mo SaaS | **$0.001 / check** + $0.002 / deep audit | **Save 99.5%** vs Monthly Retainer | [`website-health-checker`](docs/actors/website-health-checker.md) |
+| **GovTech Tender Intelligence** | ₹50,000 / yr portal | **$0.02 / query** + $0.005 / record | **Save 99.0%** vs Annual Contract | [`indian-public-tender-parser`](docs/actors/indian-public-tender-parser.md) |
+| **AI Model Pricing & MCP Index** | $150.00 / gateway setup | **$0.01 / sync** + $0.001 / model | **Save 99.8%** vs Gateway Ops | [`openrouter-mcp-registry`](docs/actors/openrouter-mcp-registry.md) |
+| **Domain Protocol & App Links** | $160.00 / audit | **$0.001 / domain** | **Save 99.4%** vs Manual QA | [`domain-protocol-signals-enricher`](docs/actors/domain-protocol-signals-enricher.md) |
 
 > ⚡ **The 99% SaaS-Replacement Law:** Run production datasets on demand with transparent micro-cent Pay-Per-Event billing. Download a free 10-row teaser CSV before running production batches.
 
