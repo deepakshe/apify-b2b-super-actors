@@ -1,0 +1,6 @@
+tender_id,portal_source,ministry_department,title,contract_value_inr,emd_amount_inr,closing_date_utc,tender_url
+GEM/2026/B/849201,GeM Portal,Ministry of Railways,Supply of Industrial IoT Temperature Sensors,4500000.00,90000.00,2026-11-05T12:00:00Z,https://gem.gov.in/bids/GEM-2026-B-849201
+CPPP/2026/DEF/1938,CPPP eProcurement,Ministry of Defence,AMC for Solar Microgrid Installation,12000000.00,240000.00,2026-11-12T10:30:00Z,https://eprocure.gov.in/cppp/tender/1938
+GEM/2026/B/901234,GeM Portal,Department of Higher Education,Campus Wi-Fi 6 Access Points & Networking,7800000.00,156000.00,2026-10-30T15:00:00Z,https://gem.gov.in/bids/GEM-2026-B-901234
+CPPP/2026/MORTH/512,CPPP eProcurement,NHAI / MoRTH,Automated Toll Plaza License Plate Cameras,32500000.00,650000.00,2026-11-20T11:00:00Z,https://eprocure.gov.in/cppp/tender/512
+GEM/2026/B/771829,GeM Portal,AIIMS New Delhi,Annual Supply of Surgical Consumables,9500000.00,190000.00,2026-11-08T14:00:00Z,https://gem.gov.in/bids/GEM-2026-B-771829

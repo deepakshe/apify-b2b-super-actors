@@ -1,0 +1,6 @@
+domain,ssl_valid,ssl_days_remaining,tls_version,hsts_enabled,csp_present,dmarc_policy,security_score,compliance_grade
+example-fintech.io,true,84,TLSv1.3,true,true,reject,98,A+
+agency-partner.co.uk,true,14,TLSv1.2,false,false,none,62,C
+retail-dropship.com,true,4,TLSv1.2,false,false,missing,45,D (URGENT_SSL_EXPIRY)
+saas-cloud-app.net,true,210,TLSv1.3,true,true,quarantine,92,A
+ecommerce-boutique.de,true,120,TLSv1.3,true,false,reject,86,B+

@@ -1,7 +1,9 @@
 # Apify B2B Super-Actors: 7 Enterprise Cloud Engines for Clay, n8n, Make & AI Agents
 
 [![GitHub Stars](https://img.shields.io/github/stars/deepakshe/apify-b2b-super-actors?style=social)](https://github.com/deepakshe/apify-b2b-super-actors)
+[![Live Benchmark](https://img.shields.io/badge/Live%20Benchmark-7%2F7%20Online-brightgreen)](LIVE_BENCHMARK_STATUS.md)
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Portfolio%20Verified-blue?logo=apify)](https://apify.com/deepaksheoran172)
+[![RapidAPI Specs](https://img.shields.io/badge/RapidAPI-OpenAPI%203.0%20Ready-purple)](marketplace_syndication/)
 [![Glama MCP](https://img.shields.io/badge/Glama.ai-Manifest%20Configured-black)](https://glama.ai/mcp)
 [![Smithery MCP](https://img.shields.io/badge/Smithery.ai-Compatible-orange)](https://smithery.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)

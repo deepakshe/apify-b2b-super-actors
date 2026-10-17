@@ -1,0 +1,125 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "apify-b2b-super-tools-mcp",
+  "displayName": "Apify B2B Super-Tools MCP Server Suite",
+  "version": "1.0.0",
+  "description": "7 High-performance automated B2B tools for Claude, Cursor, and AI Agents covering E-Commerce migrations, domain security auditing, 404 repair, public tenders, and MCP model registries.",
+  "author": "Deepak Sheoran",
+  "homepage": "https://github.com/deepakshe/apify-b2b-super-actors",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepakshe/apify-b2b-super-actors.git"
+  },
+  "registrySubmissions": {
+    "smithery": {
+      "enabled": true,
+      "configPath": "smithery.yaml",
+      "category": "developer-tools",
+      "verified": true
+    },
+    "mcp_so": {
+      "enabled": true,
+      "slug": "deepakshe/apify-b2b-super-actors",
+      "tags": [
+        "apify",
+        "b2b",
+        "e-commerce",
+        "security-audit",
+        "tender-scraper",
+        "301-redirects"
+      ]
+    },
+    "glama": {
+      "enabled": true,
+      "maintainers": [
+        "deepakshe"
+      ],
+      "featured": true
+    },
+    "pulse_mcp": {
+      "enabled": true,
+      "status": "active"
+    }
+  },
+  "server": {
+    "type": "http",
+    "url": "https://api.apify.com/v2/acts/deepaksheoran172~openrouter-mcp-registry/runs",
+    "auth": {
+      "type": "bearer",
+      "env": "APIFY_TOKEN"
+    }
+  },
+  "tools": [
+    {
+      "name": "store_catalog_redirect_extractor",
+      "displayName": "Shopify & WooCommerce Catalog + 301 Redirect Generator",
+      "description": "Extracts complete product catalogues and generates 100% SEO-safe 301 redirect CSV mappings for Shopify, WooCommerce, and BigCommerce replatforming.",
+      "category": "E-Commerce Replatforming",
+      "actorId": "ZPRZmU1mNZNJ950Xo",
+      "apifyUrl": "https://apify.com/deepaksheoran172/store-catalog-redirect-extractor",
+      "unitPriceUSD": 0.05,
+      "pricingModel": "pay-per-event"
+    },
+    {
+      "name": "domain_security_super_auditor",
+      "displayName": "Bulk Domain Security, SSL/TLS, Headers & DMARC Auditor",
+      "description": "High-speed multi-domain infrastructure scanner benchmarking TLS 1.3, SSL certificate expiry, HSTS, CSP, and SPF/DKIM/DMARC email security compliance in seconds.",
+      "category": "Security & IT Compliance",
+      "actorId": "4QWzBonorciexxFc3",
+      "apifyUrl": "https://apify.com/deepaksheoran172/domain-security-super-auditor",
+      "unitPriceUSD": 0.001,
+      "pricingModel": "pay-per-event"
+    },
+    {
+      "name": "catalog_feed_normalizer",
+      "displayName": "Shopify & WooCommerce Product Catalog Normalizer",
+      "description": "Ingests dirty multi-vendor CSV/JSON supplier feeds and transforms unescaped quotes, delimiters, variant matrices, and ISO-4217 currencies into clean Shopify RFC 4180 feeds.",
+      "category": "Data Normalization & Dropshipping",
+      "actorId": "3RSgUjqJxd7SkycfH",
+      "apifyUrl": "https://apify.com/deepaksheoran172/catalog-feed-normalizer",
+      "unitPriceUSD": 0.05,
+      "pricingModel": "pay-per-event"
+    },
+    {
+      "name": "website_health_checker",
+      "displayName": "Bulk Website Health, 404 Broken Link & SEO Technical Auditor",
+      "description": "High-throughput crawler auditing 404 errors, redirect loops, TTFB latency bottlenecks, missing meta tags, and broken anchor links across thousands of pages.",
+      "category": "Technical SEO & Web Reliability",
+      "actorId": "MQ4wt5sZNzo1YBAAH",
+      "apifyUrl": "https://apify.com/deepaksheoran172/website-health-checker",
+      "unitPriceUSD": 0.001,
+      "pricingModel": "pay-per-event"
+    },
+    {
+      "name": "indian_public_tender_parser",
+      "displayName": "India Public Tender, GeM & CPPP eProcurement Scraper",
+      "description": "Automated ingestion engine extracting Indian public procurement notices, GeM bids, CPPP tables, standardized EMD amounts, and UTC submission deadlines.",
+      "category": "Government Procurement & B2B Intelligence",
+      "actorId": "qVsV97mUeFQtQFWp1",
+      "apifyUrl": "https://apify.com/deepaksheoran172/indian-public-tender-parser",
+      "unitPriceUSD": 0.02,
+      "pricingModel": "pay-per-event"
+    },
+    {
+      "name": "openrouter_mcp_registry",
+      "displayName": "OpenRouter LLM Pricing & AI MCP Server Registry Scraper",
+      "description": "Continuous sync pipeline tracking 200+ frontier AI models, prompt/completion token pricing, context window lengths, and validated Model Context Protocol server tools.",
+      "category": "AI Infrastructure & MCP Registries",
+      "actorId": "jwu7PurBv0MV2JU1s",
+      "apifyUrl": "https://apify.com/deepaksheoran172/openrouter-mcp-registry",
+      "unitPriceUSD": 0.01,
+      "pricingModel": "pay-per-event"
+    },
+    {
+      "name": "domain_protocol_signals_enricher",
+      "displayName": "Domain Well-Known Protocol & App Link Signals Enricher",
+      "description": "Technographic enrichment tool probing RFC 9116 security.txt, Apple App Site Association (AASA), Android assetlinks.json, and OAuth well-known discovery endpoints.",
+      "category": "Technographic & Security Signals",
+      "actorId": "CIKmCOHKazs1gmzO9",
+      "apifyUrl": "https://apify.com/deepaksheoran172/domain-protocol-signals-enricher",
+      "unitPriceUSD": 0.001,
+      "pricingModel": "pay-per-event"
+    }
+  ]
+}

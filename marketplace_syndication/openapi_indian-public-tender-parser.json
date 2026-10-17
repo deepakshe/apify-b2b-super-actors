@@ -1,0 +1,218 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "India Public Tender, GeM & CPPP eProcurement Scraper (Apify Cloud API)",
+    "description": "Automated ingestion engine extracting Indian public procurement notices, GeM bids, CPPP tables, standardized EMD amounts, and UTC submission deadlines.\n\nRapidAPI Cloud Integration powered by Apify Pay-Per-Event (PPE).\nUnit Execution Price: $0.020 USD.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Apify Partner Solutions",
+      "url": "https://apify.com/deepaksheoran172/indian-public-tender-parser",
+      "email": "deepaksheoran172@apify.actor"
+    },
+    "x-rapidapi-pricing": {
+      "type": "pay-per-use",
+      "unitPrice": 0.02,
+      "currency": "USD"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.apify.com/v2",
+      "description": "Apify Global Production API v2"
+    }
+  ],
+  "security": [
+    {
+      "ApifyTokenHeader": []
+    },
+    {
+      "ApifyTokenQuery": []
+    }
+  ],
+  "paths": {
+    "/acts/deepaksheoran172~indian-public-tender-parser/run-sync-get-dataset-items": {
+      "post": {
+        "summary": "Synchronously execute indian-public-tender-parser and retrieve output dataset items",
+        "description": "Starts the Actor, waits for execution to complete, and directly returns the output dataset records as a JSON array. Recommended for RapidAPI integrations.",
+        "operationId": "runSync_indian_public_tender_parser",
+        "parameters": [
+          {
+            "name": "timeout",
+            "in": "query",
+            "description": "Maximum execution timeout in seconds (default 120)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 120
+            }
+          },
+          {
+            "name": "memory",
+            "in": "query",
+            "description": "Memory allocated in megabytes (default 1024)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1024
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Actor configuration and runtime input parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "raw_html": {
+                    "title": "Raw Tender HTML",
+                    "type": "string",
+                    "description": "Paste the HTML table or page source of the government tender notice. Pre-filled with ready-to-test tender data.",
+                    "editor": "textarea",
+                    "prefill": "<table>\n  <tr><td>Tender Reference No:</td><td>NIT-2026-PWD-8841</td></tr>\n  <tr><td>Name of Work:</td><td>Construction of 4-Lane Bypass Road</td></tr>\n  <tr><td>Department:</td><td>Public Works Department</td></tr>\n  <tr><td>Tender Value:</td><td>\u20b9 1.55 Crore</td></tr>\n  <tr><td>EMD Amount:</td><td>\u20b9 3,10,000</td></tr>\n  <tr><td>Bid Submission Closing Date:</td><td>05-Nov-2026 05:00 PM IST</td></tr>\n</table>"
+                  },
+                  "source_url": {
+                    "title": "Source URL",
+                    "type": "string",
+                    "description": "Original portal URL of the tender document (optional).",
+                    "editor": "textfield",
+                    "default": "https://eprocure.gov.in/eprocure/app",
+                    "prefill": "https://eprocure.gov.in/eprocure/app"
+                  },
+                  "portal_name": {
+                    "title": "Portal Name",
+                    "type": "string",
+                    "description": "Name of the government procurement authority or portal.",
+                    "editor": "textfield",
+                    "default": "Indian eProcurement Portal",
+                    "prefill": "Indian eProcurement Portal"
+                  }
+                },
+                "required": [
+                  "raw_html"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actor executed successfully; returns output items array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input schema parameters"
+          },
+          "401": {
+            "description": "Unauthorized; valid Apify API token required"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/acts/deepaksheoran172~indian-public-tender-parser/runs": {
+      "post": {
+        "summary": "Asynchronously start indian-public-tender-parser background run",
+        "description": "Queues an asynchronous Actor execution run on Apify Cloud and returns run status metadata.",
+        "operationId": "runAsync_indian_public_tender_parser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "raw_html": {
+                    "title": "Raw Tender HTML",
+                    "type": "string",
+                    "description": "Paste the HTML table or page source of the government tender notice. Pre-filled with ready-to-test tender data.",
+                    "editor": "textarea",
+                    "prefill": "<table>\n  <tr><td>Tender Reference No:</td><td>NIT-2026-PWD-8841</td></tr>\n  <tr><td>Name of Work:</td><td>Construction of 4-Lane Bypass Road</td></tr>\n  <tr><td>Department:</td><td>Public Works Department</td></tr>\n  <tr><td>Tender Value:</td><td>\u20b9 1.55 Crore</td></tr>\n  <tr><td>EMD Amount:</td><td>\u20b9 3,10,000</td></tr>\n  <tr><td>Bid Submission Closing Date:</td><td>05-Nov-2026 05:00 PM IST</td></tr>\n</table>"
+                  },
+                  "source_url": {
+                    "title": "Source URL",
+                    "type": "string",
+                    "description": "Original portal URL of the tender document (optional).",
+                    "editor": "textfield",
+                    "default": "https://eprocure.gov.in/eprocure/app",
+                    "prefill": "https://eprocure.gov.in/eprocure/app"
+                  },
+                  "portal_name": {
+                    "title": "Portal Name",
+                    "type": "string",
+                    "description": "Name of the government procurement authority or portal.",
+                    "editor": "textfield",
+                    "default": "Indian eProcurement Portal",
+                    "prefill": "Indian eProcurement Portal"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Actor run queued successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "actId": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "startedAt": {
+                          "type": "string"
+                        },
+                        "defaultDatasetId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApifyTokenHeader": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Bearer <YOUR_APIFY_TOKEN>"
+      },
+      "ApifyTokenQuery": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "query",
+        "description": "Apify Personal API Token parameter"
+      }
+    }
+  }
+}

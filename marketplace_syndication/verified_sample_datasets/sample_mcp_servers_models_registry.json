@@ -1,0 +1,51 @@
+{
+  "registry_version": "2026.10",
+  "sync_timestamp_utc": "2026-10-17T12:00:00Z",
+  "total_models": 218,
+  "models_sample": [
+    {
+      "id": "anthropic/claude-3.5-sonnet",
+      "name": "Claude 3.5 Sonnet",
+      "prompt_token_usd": 3e-06,
+      "completion_token_usd": 1.5e-05,
+      "context_length": 200000,
+      "mcp_compatible": true
+    },
+    {
+      "id": "openai/gpt-4o",
+      "name": "GPT-4o Omni",
+      "prompt_token_usd": 2.5e-06,
+      "completion_token_usd": 1e-05,
+      "context_length": 128000,
+      "mcp_compatible": true
+    },
+    {
+      "id": "google/gemini-pro-1.5",
+      "name": "Gemini 1.5 Pro",
+      "prompt_token_usd": 1.25e-06,
+      "completion_token_usd": 5e-06,
+      "context_length": 2000000,
+      "mcp_compatible": true
+    }
+  ],
+  "verified_mcp_servers": [
+    {
+      "name": "filesystem-mcp",
+      "repo": "modelcontextprotocol/servers",
+      "transport": "stdio",
+      "status": "VERIFIED"
+    },
+    {
+      "name": "fetch-mcp",
+      "repo": "modelcontextprotocol/servers",
+      "transport": "stdio",
+      "status": "VERIFIED"
+    },
+    {
+      "name": "apify-mcp",
+      "repo": "apify/mcp-server",
+      "transport": "http",
+      "status": "VERIFIED"
+    }
+  ]
+}

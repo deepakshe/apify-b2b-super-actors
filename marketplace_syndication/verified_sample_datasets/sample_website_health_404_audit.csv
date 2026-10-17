@@ -1,0 +1,6 @@
+source_page_url,target_url,http_status_code,response_time_ms,issue_type,severity,recommended_fix
+https://store.example.com/pages/about-us,https://store.example.com/press/2024-media-kit.pdf,404,182,BROKEN_EXTERNAL_ASSET,HIGH,Replace with updated media kit link
+https://store.example.com/collections/shoes,http://cdn.store.example.com/img/boots.jpg,301,420,MIXED_CONTENT_INSECURE_HTTP,MEDIUM,Update asset reference to https://
+https://store.example.com/checkout,https://store.example.com/terms-and-conditions,200,95,HEALTHY,NONE,Optimal latency
+https://store.example.com/products/sale-item,https://store.example.com/products/sale-item/,301,310,TRAILING_SLASH_REDIRECT_CHAIN,LOW,Standardize canonical internal link
+https://store.example.com/contact,https://help.store.example.com/ticket,503,1250,GATEWAY_TIMEOUT_SERVICE_DOWN,CRITICAL,Inspect helpdesk DNS routing

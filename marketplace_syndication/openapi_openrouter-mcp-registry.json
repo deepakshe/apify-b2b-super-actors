@@ -1,0 +1,250 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "OpenRouter LLM Pricing & AI MCP Server Registry Scraper (Apify Cloud API)",
+    "description": "Continuous sync pipeline tracking 200+ frontier AI models, prompt/completion token pricing, context window lengths, and validated Model Context Protocol server tools.\n\nRapidAPI Cloud Integration powered by Apify Pay-Per-Event (PPE).\nUnit Execution Price: $0.010 USD.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Apify Partner Solutions",
+      "url": "https://apify.com/deepaksheoran172/openrouter-mcp-registry",
+      "email": "deepaksheoran172@apify.actor"
+    },
+    "x-rapidapi-pricing": {
+      "type": "pay-per-use",
+      "unitPrice": 0.01,
+      "currency": "USD"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.apify.com/v2",
+      "description": "Apify Global Production API v2"
+    }
+  ],
+  "security": [
+    {
+      "ApifyTokenHeader": []
+    },
+    {
+      "ApifyTokenQuery": []
+    }
+  ],
+  "paths": {
+    "/acts/deepaksheoran172~openrouter-mcp-registry/run-sync-get-dataset-items": {
+      "post": {
+        "summary": "Synchronously execute openrouter-mcp-registry and retrieve output dataset items",
+        "description": "Starts the Actor, waits for execution to complete, and directly returns the output dataset records as a JSON array. Recommended for RapidAPI integrations.",
+        "operationId": "runSync_openrouter_mcp_registry",
+        "parameters": [
+          {
+            "name": "timeout",
+            "in": "query",
+            "description": "Maximum execution timeout in seconds (default 120)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 120
+            }
+          },
+          {
+            "name": "memory",
+            "in": "query",
+            "description": "Memory allocated in megabytes (default 1024)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1024
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Actor configuration and runtime input parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "title": "Registry Mode",
+                    "type": "string",
+                    "description": "Choose whether to index OpenRouter AI models catalog, MCP server tools registry, or both.",
+                    "editor": "select",
+                    "default": "both",
+                    "prefill": "both",
+                    "enum": [
+                      "both",
+                      "models",
+                      "mcp"
+                    ],
+                    "enumTitles": [
+                      "Both (Models + MCP Tools)",
+                      "OpenRouter Models Only",
+                      "MCP Servers Only"
+                    ]
+                  },
+                  "free_only": {
+                    "title": "Free Only",
+                    "type": "boolean",
+                    "description": "Filter models to only 100% free models ($0/1M prompt and completion). For MCP, filters to zero-auth servers.",
+                    "default": false,
+                    "prefill": false
+                  },
+                  "multimodal_only": {
+                    "title": "Multimodal Only",
+                    "type": "boolean",
+                    "description": "Filter models to only vision/multimodal capable models.",
+                    "default": false,
+                    "prefill": false
+                  },
+                  "min_context": {
+                    "title": "Minimum Context Window",
+                    "type": "integer",
+                    "description": "Minimum token context window (e.g. 32000, 128000, 200000).",
+                    "default": 0,
+                    "prefill": 0,
+                    "minimum": 0
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actor executed successfully; returns output items array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input schema parameters"
+          },
+          "401": {
+            "description": "Unauthorized; valid Apify API token required"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/acts/deepaksheoran172~openrouter-mcp-registry/runs": {
+      "post": {
+        "summary": "Asynchronously start openrouter-mcp-registry background run",
+        "description": "Queues an asynchronous Actor execution run on Apify Cloud and returns run status metadata.",
+        "operationId": "runAsync_openrouter_mcp_registry",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "title": "Registry Mode",
+                    "type": "string",
+                    "description": "Choose whether to index OpenRouter AI models catalog, MCP server tools registry, or both.",
+                    "editor": "select",
+                    "default": "both",
+                    "prefill": "both",
+                    "enum": [
+                      "both",
+                      "models",
+                      "mcp"
+                    ],
+                    "enumTitles": [
+                      "Both (Models + MCP Tools)",
+                      "OpenRouter Models Only",
+                      "MCP Servers Only"
+                    ]
+                  },
+                  "free_only": {
+                    "title": "Free Only",
+                    "type": "boolean",
+                    "description": "Filter models to only 100% free models ($0/1M prompt and completion). For MCP, filters to zero-auth servers.",
+                    "default": false,
+                    "prefill": false
+                  },
+                  "multimodal_only": {
+                    "title": "Multimodal Only",
+                    "type": "boolean",
+                    "description": "Filter models to only vision/multimodal capable models.",
+                    "default": false,
+                    "prefill": false
+                  },
+                  "min_context": {
+                    "title": "Minimum Context Window",
+                    "type": "integer",
+                    "description": "Minimum token context window (e.g. 32000, 128000, 200000).",
+                    "default": 0,
+                    "prefill": 0,
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Actor run queued successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "actId": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "startedAt": {
+                          "type": "string"
+                        },
+                        "defaultDatasetId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApifyTokenHeader": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Bearer <YOUR_APIFY_TOKEN>"
+      },
+      "ApifyTokenQuery": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "query",
+        "description": "Apify Personal API Token parameter"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+Handle,Title,Body (HTML),Vendor,Type,Tags,Option1 Name,Option1 Value,Variant SKU,Variant Price,Variant Requires Shipping
+premium-linen-shirt,Premium Linen Shirt,<p>100% Organic Italian Linen.</p>,Artisan Apparel,Shirts,"linen, summer, menswear",Size,Small,LIN-SHT-WHT-S,79.00,true
+premium-linen-shirt,Premium Linen Shirt,<p>100% Organic Italian Linen.</p>,Artisan Apparel,Shirts,"linen, summer, menswear",Size,Medium,LIN-SHT-WHT-M,79.00,true
+premium-linen-shirt,Premium Linen Shirt,<p>100% Organic Italian Linen.</p>,Artisan Apparel,Shirts,"linen, summer, menswear",Size,Large,LIN-SHT-WHT-L,79.00,true
+waterproof-hiking-boot,Alpine Waterproof Hiking Boot,<p>Rugged all-weather trail boot.</p>,Nordic Trail,Footwear,"hiking, waterproof, outdoor",Size,US 10,NOR-BT-10M,149.50,true
+ceramic-artisan-mug,Handcrafted Ceramic Mug - 12oz,<p>Microwave & dishwasher safe stoneware.</p>,Studio Terra,Home & Kitchen,"ceramic, mug, kitchenware",Color,Earthy Sand,STU-MUG-SND,24.00,true

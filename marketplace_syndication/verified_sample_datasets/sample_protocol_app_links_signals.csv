@@ -1,0 +1,6 @@
+domain,apple_app_site_association_valid,android_assetlinks_valid,security_txt_present,security_txt_contact,openid_config_present,enrichment_score
+stripe.com,true,true,true,security@stripe.com,false,96
+shopify.com,true,true,true,https://hackerone.com/shopify,false,98
+github.com,true,true,true,support@github.com,true,100
+linear.app,true,true,true,security@linear.app,false,94
+notion.so,true,true,true,security@makenotion.com,false,95

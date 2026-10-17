@@ -1,0 +1,280 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Bulk Domain Security, SSL/TLS, Headers & DMARC Auditor (Apify Cloud API)",
+    "description": "High-speed multi-domain infrastructure scanner benchmarking TLS 1.3, SSL certificate expiry, HSTS, CSP, and SPF/DKIM/DMARC email security compliance in seconds.\n\nRapidAPI Cloud Integration powered by Apify Pay-Per-Event (PPE).\nUnit Execution Price: $0.001 USD.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Apify Partner Solutions",
+      "url": "https://apify.com/deepaksheoran172/domain-security-super-auditor",
+      "email": "deepaksheoran172@apify.actor"
+    },
+    "x-rapidapi-pricing": {
+      "type": "pay-per-use",
+      "unitPrice": 0.001,
+      "currency": "USD"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.apify.com/v2",
+      "description": "Apify Global Production API v2"
+    }
+  ],
+  "security": [
+    {
+      "ApifyTokenHeader": []
+    },
+    {
+      "ApifyTokenQuery": []
+    }
+  ],
+  "paths": {
+    "/acts/deepaksheoran172~domain-security-super-auditor/run-sync-get-dataset-items": {
+      "post": {
+        "summary": "Synchronously execute domain-security-super-auditor and retrieve output dataset items",
+        "description": "Starts the Actor, waits for execution to complete, and directly returns the output dataset records as a JSON array. Recommended for RapidAPI integrations.",
+        "operationId": "runSync_domain_security_super_auditor",
+        "parameters": [
+          {
+            "name": "timeout",
+            "in": "query",
+            "description": "Maximum execution timeout in seconds (default 120)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 120
+            }
+          },
+          {
+            "name": "memory",
+            "in": "query",
+            "description": "Memory allocated in megabytes (default 1024)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1024
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Actor configuration and runtime input parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domains": {
+                    "title": "Target Domains",
+                    "type": "array",
+                    "description": "List of domains, hostnames, or URLs to audit for security, SSL/TLS, and DNS posture.",
+                    "editor": "stringList",
+                    "prefill": [
+                      "google.com",
+                      "cloudflare.com",
+                      "github.com"
+                    ]
+                  },
+                  "include_dns_deliverability": {
+                    "title": "Include DNS & Email Deliverability Audit",
+                    "type": "boolean",
+                    "description": "Audit MX records, mail provider fingerprinting, SPF syntax and RFC 7208 lookup limit, and DMARC enforcement.",
+                    "default": true
+                  },
+                  "include_rdap_age": {
+                    "title": "Include RDAP Domain Age & Registrar Intelligence",
+                    "type": "boolean",
+                    "description": "Query official RDAP endpoints for registration date, domain age in days, registrar name, and burner domain risk.",
+                    "default": true
+                  },
+                  "timeout_seconds": {
+                    "title": "Connection Timeout (Seconds)",
+                    "type": "integer",
+                    "description": "Network timeout limit per check in seconds.",
+                    "default": 8,
+                    "minimum": 2,
+                    "maximum": 30
+                  },
+                  "alert_threshold_days": {
+                    "title": "SSL Expiry Alert Threshold (Days)",
+                    "type": "integer",
+                    "description": "Flag certificate as expiring soon if days until expiration is less than or equal to this threshold.",
+                    "default": 30,
+                    "minimum": 1,
+                    "maximum": 365
+                  },
+                  "concurrency": {
+                    "title": "Worker Concurrency",
+                    "type": "integer",
+                    "description": "Number of concurrent asynchronous domain audits running simultaneously.",
+                    "default": 10,
+                    "minimum": 1,
+                    "maximum": 50
+                  },
+                  "max_domains": {
+                    "title": "Maximum Domains Cap",
+                    "type": "integer",
+                    "description": "Maximum number of domains to process in a single run.",
+                    "default": 1000,
+                    "minimum": 1
+                  }
+                },
+                "required": [
+                  "domains"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actor executed successfully; returns output items array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input schema parameters"
+          },
+          "401": {
+            "description": "Unauthorized; valid Apify API token required"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/acts/deepaksheoran172~domain-security-super-auditor/runs": {
+      "post": {
+        "summary": "Asynchronously start domain-security-super-auditor background run",
+        "description": "Queues an asynchronous Actor execution run on Apify Cloud and returns run status metadata.",
+        "operationId": "runAsync_domain_security_super_auditor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domains": {
+                    "title": "Target Domains",
+                    "type": "array",
+                    "description": "List of domains, hostnames, or URLs to audit for security, SSL/TLS, and DNS posture.",
+                    "editor": "stringList",
+                    "prefill": [
+                      "google.com",
+                      "cloudflare.com",
+                      "github.com"
+                    ]
+                  },
+                  "include_dns_deliverability": {
+                    "title": "Include DNS & Email Deliverability Audit",
+                    "type": "boolean",
+                    "description": "Audit MX records, mail provider fingerprinting, SPF syntax and RFC 7208 lookup limit, and DMARC enforcement.",
+                    "default": true
+                  },
+                  "include_rdap_age": {
+                    "title": "Include RDAP Domain Age & Registrar Intelligence",
+                    "type": "boolean",
+                    "description": "Query official RDAP endpoints for registration date, domain age in days, registrar name, and burner domain risk.",
+                    "default": true
+                  },
+                  "timeout_seconds": {
+                    "title": "Connection Timeout (Seconds)",
+                    "type": "integer",
+                    "description": "Network timeout limit per check in seconds.",
+                    "default": 8,
+                    "minimum": 2,
+                    "maximum": 30
+                  },
+                  "alert_threshold_days": {
+                    "title": "SSL Expiry Alert Threshold (Days)",
+                    "type": "integer",
+                    "description": "Flag certificate as expiring soon if days until expiration is less than or equal to this threshold.",
+                    "default": 30,
+                    "minimum": 1,
+                    "maximum": 365
+                  },
+                  "concurrency": {
+                    "title": "Worker Concurrency",
+                    "type": "integer",
+                    "description": "Number of concurrent asynchronous domain audits running simultaneously.",
+                    "default": 10,
+                    "minimum": 1,
+                    "maximum": 50
+                  },
+                  "max_domains": {
+                    "title": "Maximum Domains Cap",
+                    "type": "integer",
+                    "description": "Maximum number of domains to process in a single run.",
+                    "default": 1000,
+                    "minimum": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Actor run queued successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "actId": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "startedAt": {
+                          "type": "string"
+                        },
+                        "defaultDatasetId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApifyTokenHeader": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Bearer <YOUR_APIFY_TOKEN>"
+      },
+      "ApifyTokenQuery": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "query",
+        "description": "Apify Personal API Token parameter"
+      }
+    }
+  }
+}

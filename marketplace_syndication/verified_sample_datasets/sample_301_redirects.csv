@@ -1,0 +1,6 @@
+source_url,target_url,http_status,redirect_type,match_confidence,notes
+https://store.example.com/products/leather-jacket,https://newstore.example.com/products/mens-leather-jacket,301,EXACT_SLUG_MATCH,1.00,Direct catalog handle match
+https://store.example.com/collections/autumn-sale,https://newstore.example.com/collections/fall-specials,301,CATEGORY_MAPPING,0.95,Collection taxonomy mapped
+https://store.example.com/catalog/item?id=8492,https://newstore.example.com/products/classic-wool-sweater,301,SKU_ID_RECOVERY,0.92,Query param ID recovered to clean URL
+https://store.example.com/blog/2025/top-trends,https://newstore.example.com/blogs/news/top-trends,301,BLOG_PATH_PRESERVATION,1.00,WordPress to Shopify blog path
+https://store.example.com/products/accessories/hats,https://newstore.example.com/collections/hats-caps,301,NESTED_CATEGORY_ROLLUP,0.89,Subcategory rolled up to new collection

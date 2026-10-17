@@ -1,0 +1,256 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Shopify & WooCommerce Product Catalog Normalizer (Apify Cloud API)",
+    "description": "Ingests dirty multi-vendor CSV/JSON supplier feeds and transforms unescaped quotes, delimiters, variant matrices, and ISO-4217 currencies into clean Shopify RFC 4180 feeds.\n\nRapidAPI Cloud Integration powered by Apify Pay-Per-Event (PPE).\nUnit Execution Price: $0.050 USD.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Apify Partner Solutions",
+      "url": "https://apify.com/deepaksheoran172/catalog-feed-normalizer",
+      "email": "deepaksheoran172@apify.actor"
+    },
+    "x-rapidapi-pricing": {
+      "type": "pay-per-use",
+      "unitPrice": 0.05,
+      "currency": "USD"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.apify.com/v2",
+      "description": "Apify Global Production API v2"
+    }
+  ],
+  "security": [
+    {
+      "ApifyTokenHeader": []
+    },
+    {
+      "ApifyTokenQuery": []
+    }
+  ],
+  "paths": {
+    "/acts/deepaksheoran172~catalog-feed-normalizer/run-sync-get-dataset-items": {
+      "post": {
+        "summary": "Synchronously execute catalog-feed-normalizer and retrieve output dataset items",
+        "description": "Starts the Actor, waits for execution to complete, and directly returns the output dataset records as a JSON array. Recommended for RapidAPI integrations.",
+        "operationId": "runSync_catalog_feed_normalizer",
+        "parameters": [
+          {
+            "name": "timeout",
+            "in": "query",
+            "description": "Maximum execution timeout in seconds (default 120)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 120
+            }
+          },
+          {
+            "name": "memory",
+            "in": "query",
+            "description": "Memory allocated in megabytes (default 1024)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1024
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Actor configuration and runtime input parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rawCsv": {
+                    "title": "Raw CSV Content",
+                    "type": "string",
+                    "description": "Paste vendor catalog CSV content directly. Pre-filled with ready-to-test supplier data.",
+                    "editor": "textarea",
+                    "prefill": "SKU,Title,Price,Description,Inventory,Option1 Name,Option1 Value\nPROD-CHAIR-01,Ergonomic Mesh Chair - Black,299.00,Commercial ergonomic high-back desk chair,45,Color,Black\nPROD-CHAIR-02,Ergonomic Mesh Chair - Gray,299.00,Commercial ergonomic high-back desk chair,30,Color,Gray\nPROD-DESK-01,Motorized Standing Desk 60in,549.00,Dual-motor adjustable height workstation,15,Color,Walnut"
+                  },
+                  "csvUrl": {
+                    "title": "CSV Download URL",
+                    "type": "string",
+                    "description": "Public HTTP/HTTPS URL to download the vendor CSV from.",
+                    "editor": "textfield"
+                  },
+                  "mapping": {
+                    "title": "Column Mapping JSON",
+                    "type": "object",
+                    "description": "Custom mapping dictionary from vendor CSV columns to Shopify fields (title, price, sku, etc.). Leave empty for automatic column detection.",
+                    "editor": "json"
+                  },
+                  "defaultVendor": {
+                    "title": "Default Vendor / Brand",
+                    "type": "string",
+                    "description": "Fallback vendor or brand name to apply when vendor column is missing or blank.",
+                    "editor": "textfield",
+                    "default": "ApexSuppliers Inc.",
+                    "prefill": "ApexSuppliers Inc."
+                  },
+                  "defaultStatus": {
+                    "title": "Product Status",
+                    "type": "string",
+                    "description": "Default status for imported products in Shopify.",
+                    "editor": "select",
+                    "default": "active",
+                    "prefill": "active",
+                    "enum": [
+                      "active",
+                      "draft"
+                    ],
+                    "enumTitles": [
+                      "Active",
+                      "Draft"
+                    ]
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Actor executed successfully; returns output items array",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input schema parameters"
+          },
+          "401": {
+            "description": "Unauthorized; valid Apify API token required"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/acts/deepaksheoran172~catalog-feed-normalizer/runs": {
+      "post": {
+        "summary": "Asynchronously start catalog-feed-normalizer background run",
+        "description": "Queues an asynchronous Actor execution run on Apify Cloud and returns run status metadata.",
+        "operationId": "runAsync_catalog_feed_normalizer",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rawCsv": {
+                    "title": "Raw CSV Content",
+                    "type": "string",
+                    "description": "Paste vendor catalog CSV content directly. Pre-filled with ready-to-test supplier data.",
+                    "editor": "textarea",
+                    "prefill": "SKU,Title,Price,Description,Inventory,Option1 Name,Option1 Value\nPROD-CHAIR-01,Ergonomic Mesh Chair - Black,299.00,Commercial ergonomic high-back desk chair,45,Color,Black\nPROD-CHAIR-02,Ergonomic Mesh Chair - Gray,299.00,Commercial ergonomic high-back desk chair,30,Color,Gray\nPROD-DESK-01,Motorized Standing Desk 60in,549.00,Dual-motor adjustable height workstation,15,Color,Walnut"
+                  },
+                  "csvUrl": {
+                    "title": "CSV Download URL",
+                    "type": "string",
+                    "description": "Public HTTP/HTTPS URL to download the vendor CSV from.",
+                    "editor": "textfield"
+                  },
+                  "mapping": {
+                    "title": "Column Mapping JSON",
+                    "type": "object",
+                    "description": "Custom mapping dictionary from vendor CSV columns to Shopify fields (title, price, sku, etc.). Leave empty for automatic column detection.",
+                    "editor": "json"
+                  },
+                  "defaultVendor": {
+                    "title": "Default Vendor / Brand",
+                    "type": "string",
+                    "description": "Fallback vendor or brand name to apply when vendor column is missing or blank.",
+                    "editor": "textfield",
+                    "default": "ApexSuppliers Inc.",
+                    "prefill": "ApexSuppliers Inc."
+                  },
+                  "defaultStatus": {
+                    "title": "Product Status",
+                    "type": "string",
+                    "description": "Default status for imported products in Shopify.",
+                    "editor": "select",
+                    "default": "active",
+                    "prefill": "active",
+                    "enum": [
+                      "active",
+                      "draft"
+                    ],
+                    "enumTitles": [
+                      "Active",
+                      "Draft"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Actor run queued successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "actId": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "startedAt": {
+                          "type": "string"
+                        },
+                        "defaultDatasetId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApifyTokenHeader": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Bearer <YOUR_APIFY_TOKEN>"
+      },
+      "ApifyTokenQuery": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "query",
+        "description": "Apify Personal API Token parameter"
+      }
+    }
+  }
+}

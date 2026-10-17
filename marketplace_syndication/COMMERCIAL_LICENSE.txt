@@ -1,0 +1,9 @@
+COMMERCIAL AGENCY LICENSE (SINGLE AGENCY / UNLIMITED CLIENTS)
+
+Grant of License:
+This license grants the purchasing entity non-exclusive, perpetual rights to deploy, modify, and execute the included 7 n8n workflow blueprints and sample datasets for internal operations and across unlimited direct client projects.
+
+Redistribution Restrictions:
+You may not re-sell, bundle, or distribute the raw JSON blueprints as standalone digital templates on marketplaces. Direct implementation for client deliverables is 100% permitted.
+
+© 2026 Deepak Sheoran / Apify Partner Ecosystem. All rights reserved.
