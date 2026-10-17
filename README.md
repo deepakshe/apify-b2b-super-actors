@@ -58,6 +58,62 @@ Each workflow is pre-wired to Apify's synchronous execution endpoint (`https://a
 
 > 📘 **Detailed Buyer Workflows:** For full outcome-based integration guides across all 14 task pages, see the [Enterprise B2B Workflow Catalog](docs/WORKFLOW_CATALOG.md).
 
+---
+
+## ⚡ Instant 1-Click Test (Try via cURL in 5 Seconds)
+
+Run any engine synchronously on Apify Cloud and retrieve clean dataset items immediately:
+
+```bash
+# 1. Store Migration & 301 Redirects
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~store-catalog-redirect-extractor/run-sync-get-dataset-items" \
+  -H "Content-Type: application/json" \
+  -d '{"start_urls": [{"url": "https://example-store.com"}], "max_items": 100}'
+
+# 2. Cybersecurity & DMARC/SSL Auditor
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~domain-security-super-auditor/run-sync-get-dataset-items" \
+  -H "Content-Type: application/json" \
+  -d '{"domains": ["github.com"], "include_dns_deliverability": true, "timeout_seconds": 10}'
+
+# 3. Website Health & Broken Link Checker
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~website-health-checker/run-sync-get-dataset-items" \
+  -H "Content-Type: application/json" \
+  -d '{"start_url": "https://example.com", "max_pages": 20, "max_concurrency": 5}'
+
+# 4. Catalog Feed Normalizer
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~catalog-feed-normalizer/run-sync-get-dataset-items" \
+  -H "Content-Type: application/json" \
+  -d '{"csvUrl": "https://raw.githubusercontent.com/deepakshe/apify-b2b-super-actors/main/samples/vendor_messy_catalog.csv"}'
+
+# 5. GovTech Tender Intelligence
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~indian-public-tender-parser/run-sync-get-dataset-items" \
+  -H "Content-Type: application/json" \
+  -d '{"raw_html": "<table><tr><td>Tender ID: GEM/2026/B/9921</td><td>EMD: INR 5,00,000</td></tr></table>", "portal_name": "GeM Portal"}'
+
+# 6. AI Models & MCP Registry
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~openrouter-mcp-registry/run-sync-get-dataset-items" \
+  -H "Content-Type: application/json" \
+  -d '{"mode": "both", "free_only": false, "min_context": 128000}'
+
+# 7. Domain Protocol & App Links
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~domain-protocol-signals-enricher/run-sync-get-dataset-items" \
+  -H "Content-Type: application/json" \
+  -d '{"domains": ["shopify.com", "stripe.com"], "max_concurrency": 5}'
+```
+
+---
+
+## 🎯 Targeted Use Cases & SEO Search Keywords
+
+| Actor Slug | High-Intent Search Keywords | Primary Target Buyer |
+|---|---|---|
+| `store-catalog-redirect-extractor` | `shopify migration`, `woocommerce scraper`, `301 redirect mapping`, `product catalog csv`, `seo redirect generator` | E-Commerce Agencies, Shopify Plus Developers |
+| `domain-security-super-auditor` | `dmarc email security`, `spf record checker`, `ssl certificate expiry monitor`, `security headers hsts`, `domain risk audit` | B2B Outbound Agencies, IT Security Leads |
+| `catalog-feed-normalizer` | `shopify product csv normalizer`, `vendor feed cleanup`, `sku deduplication`, `rfc 4180 csv`, `ecommerce feed format` | Store Operators, Catalog Managers |
+| `website-health-checker` | `broken link checker`, `404 crawler`, `redirect chain audit`, `ttfb latency checker`, `technical seo site audit` | Growth Engineers, SEO Specialists |
+| `indian-public-tender-parser` | `gem tender scraper`, `cppp eprocure parser`, `tender notice json`, `india government bids`, `procurement intelligence` | GovTech Bidders, Enterprise Suppliers |
+| `openrouter-mcp-registry` | `openrouter model pricing api`, `mcp tool server registry`, `claude cursor mcp tools`, `llm token cost calculator` | AI Engineers, Vibe Coders, Agent Builders |
+| `domain-protocol-signals-enricher` | `assetlinks json check`, `apple app site association`, `mta sts validator`, `well known protocol scraper`, `llms txt reader` | Mobile App Teams, Tech Lead Gen |
 
 ---
 
