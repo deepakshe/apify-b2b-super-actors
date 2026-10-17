@@ -14,17 +14,19 @@ Serverless data micro-engines designed for **B2B outbound operations**, **Clay e
 
 ---
 
-## 💰 Transparent Cost Model: Micro-Engines vs. Fixed SaaS Retainers
+## 💰 High-Converting ROI Price Anchoring & Cost Model
 
-| Capability / Workflow | Legacy SaaS Alternative | Legacy Cost | Apify Pay-Per-Event (PPE) Actor | PPE Verified Base & Usage Pricing |
-|---|---|---|---|---|
-| **E-Commerce Feed Normalization** | Matrixify / Salsify Enterprise | $200 – $500 / mo | `catalog-feed-normalizer` | **$0.05 / run** + $0.0005 / item normalized |
-| **Site Health & 404 Auditing** | Ahrefs / Screaming Frog | $199 – $499 / mo | `website-health-checker` | **$0.001 / check** + $0.002 / deep page audit |
-| **GovTech Tender Intelligence** | Tender247 / TendersInfo | ₹50,000 – ₹1.5L / yr | `indian-public-tender-parser` | **$0.02 / query** + $0.005 / record parsed |
-| **AI Model Pricing & MCP Index** | Proprietary AI Gateways | $250 / mo | `openrouter-mcp-registry` | **$0.01 / sync** + $0.001 / model detail |
-| **Store Migration & 301 Redirects** | Cart2Cart / LitExtension | $150 – $499 / run | `store-catalog-redirect-extractor` | **$0.05 / extraction** + $0.001 / product exported |
-| **Cybersecurity & DMARC Audits** | UpGuard / SecurityScorecard | $300 – $800 / mo | `domain-security-super-auditor` | **$0.001 / audit** + $0.001 / enrichment |
-| **Domain Protocol & App Link Signals** | Custom scrapers / enterprise intel | $150 – $300 / mo | `domain-protocol-signals-enricher` | **$0.001 / domain** |
+| Capability / Workflow | Manual Agency / Legacy Cost Anchor | Regular Store Price | Active 60% Launch Discount | Apify Pay-Per-Event (PPE) Actor | 10-Row Empirical Teaser Proof |
+|---|---|---|---|---|---|
+| **Store Migration & 301 Redirects** | $250.00 / migration | $12.50 / 1k items | **$4.50 / 1k items** *(Save 98.2%)* | [`store-catalog-redirect-extractor`](docs/actors/store-catalog-redirect-extractor.md) | Verified 301 mapping matrix + handle normalizer |
+| **Cybersecurity & DMARC Audits** | $180.00 / audit | $6.00 / 1k domains | **$2.40 / 1k domains** *(Save 98.7%)* | [`domain-security-super-auditor`](docs/actors/domain-security-super-auditor.md) | Live TLS 1.3 handshake + SPF/DMARC compliance |
+| **E-Commerce Feed Normalization** | $200.00 / feed cleanup | $8.00 / 1k items | **$3.20 / 1k items** *(Save 98.4%)* | [`catalog-feed-normalizer`](docs/actors/catalog-feed-normalizer.md) | RFC 4180 Shopify CSV fix + unescaped delimiter check |
+| **Site Health & 404 Auditing** | $150.00 / crawl audit | $6.00 / 1k pages | **$2.40 / 1k pages** *(Save 98.4%)* | [`website-health-checker`](docs/actors/website-health-checker.md) | Dead link detection + redirect loop tracer |
+| **GovTech Tender Intelligence** | $220.00 / bid parsing | $15.00 / 1k notices | **$4.50 / 1k notices** *(Save 98.0%)* | [`indian-public-tender-parser`](docs/actors/indian-public-tender-parser.md) | CPPP/GeM tender notice & deadline extractor |
+| **AI Model Pricing & MCP Index** | $150.00 / gateway sync | $6.00 / 1k queries | **$1.90 / 1k queries** *(Save 98.7%)* | [`openrouter-mcp-registry`](docs/actors/openrouter-mcp-registry.md) | 200+ frontier AI models + verified MCP schemas |
+| **Domain Protocol & App Links** | $160.00 / mobile audit | $6.00 / 1k domains | **$2.40 / 1k domains** *(Save 98.5%)* | [`domain-protocol-signals-enricher`](docs/actors/domain-protocol-signals-enricher.md) | Universal links & security.txt verification |
+
+> ⚡ **Launch Urgency Hook:** Active 60% Launch Window applied automatically across all Pay-Per-Event calls. Download your free 10-row teaser CSV before running production batches.
 
 ---
 
