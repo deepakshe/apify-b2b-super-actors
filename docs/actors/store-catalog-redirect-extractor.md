@@ -1,7 +1,7 @@
 # Shopify & WooCommerce Catalog + 301 Redirect Generator
 
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Live%20Actor-blue?logo=apify)](https://apify.com/deepaksheoran172/store-catalog-redirect-extractor)
-[![Price](https://img.shields.io/badge/Launch%20Price-$4.50%2F1k%20items-brightgreen)](https://apify.com/deepaksheoran172/store-catalog-redirect-extractor)
+[![Price](https://img.shields.io/badge/Apify%20Rate-$0.05%20base%20+%20$0.001%2Fitem-brightgreen)](https://apify.com/deepaksheoran172/store-catalog-redirect-extractor)
 
 Extracts full store catalog URLs and automatically generates 100% SEO-safe 301 redirect mappings for Shopify migrations without 404 drops or lost organic traffic.
 
@@ -12,10 +12,10 @@ Extracts full store catalog URLs and automatically generates 100% SEO-safe 301 r
 | Solution Tier | Cost Structure | Turnaround Time | SEO Guarantee |
 |---|---|---|---|
 | **Manual SEO Agency Retainer** | **$250.00 / migration** | 3–5 Business Days | Manual spreadsheet errors |
-| **Regular Store PPE Price** | $12.50 / 1k items | 60 Seconds | Automated RFC mapping |
-| **⚡ Active 60% Launch Discount** | **$4.50 / 1k items** *(Save 98.2%)* | **60 Seconds** | **100% Match Verification** |
+| **Apify Pay-Per-Event (PPE)** | **$0.05 base + $0.001 / item** *(~$1.05 / 1k)* | **60 Seconds** | **100% Match Verification** |
+| **⚡ Net Savings** | **Save 99.6%** vs Agency | **Real-Time** | **Zero Monthly Retainer** |
 
-> 🚨 **Urgency Hook:** 60% Launch Discount active for early adopters. Protect organic rankings for less than the cost of a coffee.
+> 🚨 **The Agency Killer:** Why pay an SEO agency $250 for manual spreadsheet mapping when you can extract and map 1,000 product redirects for ~$1.05 on Apify Cloud?
 
 ---
 

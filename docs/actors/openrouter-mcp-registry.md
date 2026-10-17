@@ -1,7 +1,7 @@
 # OpenRouter AI Models & MCP Schema Registry
 
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Live%20Actor-blue?logo=apify)](https://apify.com/deepaksheoran172/openrouter-mcp-registry)
-[![Price](https://img.shields.io/badge/Launch%20Price-$1.90%2F1k%20queries-brightgreen)](https://apify.com/deepaksheoran172/openrouter-mcp-registry)
+[![Price](https://img.shields.io/badge/Apify%20Rate-$0.01%20base%20+%20$0.001%2Fmodel-brightgreen)](https://apify.com/deepaksheoran172/openrouter-mcp-registry)
 
 Synchronizes 200+ frontier AI models, live context window limits, prompt pricing, and verified Model Context Protocol (MCP) tool declarations for Cursor, Claude Desktop, and autonomous agents.
 
@@ -12,10 +12,10 @@ Synchronizes 200+ frontier AI models, live context window limits, prompt pricing
 | Solution Tier | Cost Structure | Model Coverage | MCP Tool Support |
 |---|---|---|---|
 | **Proprietary AI Gateway** | **$150.00–$250.00 / month** | Limited to single vendor | No native MCP sync |
-| **Regular Store PPE Price** | $6.00 / 1k queries | 200+ frontier models | Full JSON schema export |
-| **⚡ Active 60% Launch Discount** | **$1.90 / 1k queries** *(Save 98.7%)* | **200+ Frontier Models** | **Claude & Cursor Native** |
+| **Apify Pay-Per-Event (PPE)** | **$0.01 base + $0.001 / model** *(~$0.21 / run)* | 200+ frontier models | Full JSON schema export |
+| **⚡ Net Savings** | **Save 99.8%** vs Gateway | **200+ Frontier Models** | **Claude & Cursor Native** |
 
-> 🚨 **Urgency Hook:** 60% Launch Discount active for AI engineers and agent builders. Keep token pricing synced dynamically.
+> 🚨 **The Gateway Killer:** Sync 200+ AI models and verified MCP declarations for ~$0.21 on Apify Cloud instead of maintaining proprietary gateway pipelines.
 
 ---
 

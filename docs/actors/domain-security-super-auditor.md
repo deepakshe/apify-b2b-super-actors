@@ -1,7 +1,7 @@
 # Bulk Domain Security & SSL/TLS Audit Tool
 
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Live%20Actor-blue?logo=apify)](https://apify.com/deepaksheoran172/domain-security-super-auditor)
-[![Price](https://img.shields.io/badge/Launch%20Price-$2.40%2F1k%20domains-brightgreen)](https://apify.com/deepaksheoran172/domain-security-super-auditor)
+[![Price](https://img.shields.io/badge/Apify%20Rate-$0.001%2Fdomain-brightgreen)](https://apify.com/deepaksheoran172/domain-security-super-auditor)
 
 Audits client domains in bulk for SSL/TLS certificate validity, cipher deprecation, HSTS, and SPF/DKIM/DMARC email deliverability records.
 
@@ -12,10 +12,10 @@ Audits client domains in bulk for SSL/TLS certificate validity, cipher deprecati
 | Solution Tier | Cost Structure | Coverage | Verification Standard |
 |---|---|---|---|
 | **Manual Cybersecurity Audit** | **$180.00 / audit** | 1 Domain | Manual OpenSSL & DNS lookup |
-| **Regular Store PPE Price** | $6.00 / 1k domains | Unlimited | Automated TLS 1.3 + RFC checks |
-| **⚡ Active 60% Launch Discount** | **$2.40 / 1k domains** *(Save 98.7%)* | **Unlimited** | **RFC 7208 / 7489 Compliant** |
+| **Apify Pay-Per-Event (PPE)** | **$0.001 / domain** *($1.00 / 1k domains)* | Unlimited | Automated TLS 1.3 + RFC checks |
+| **⚡ Net Savings** | **Save 99.4%** vs Consultant | **Unlimited** | **RFC 7208 / 7489 Compliant** |
 
-> 🚨 **Urgency Hook:** 60% Launch Discount active for MSPs and consultants. Scan 1,000 domains for just $2.40.
+> 🚨 **The Consultant Killer:** Audit 1,000 domains for $1.00 on Apify Cloud instead of paying $180 for a manual PDF audit.
 
 ---
 

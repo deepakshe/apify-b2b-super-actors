@@ -1,7 +1,7 @@
 # Shopify Supplier Feed & CSV Normalizer
 
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Live%20Actor-blue?logo=apify)](https://apify.com/deepaksheoran172/catalog-feed-normalizer)
-[![Price](https://img.shields.io/badge/Launch%20Price-$3.20%2F1k%20items-brightgreen)](https://apify.com/deepaksheoran172/catalog-feed-normalizer)
+[![Price](https://img.shields.io/badge/Apify%20Rate-$0.05%20base%20+%20$0.0005%2Fitem-brightgreen)](https://apify.com/deepaksheoran172/catalog-feed-normalizer)
 
 Cleans malformed supplier CSVs, resolves unescaped delimiters, and outputs Shopify-compliant catalog feeds that import without errors.
 
@@ -12,10 +12,10 @@ Cleans malformed supplier CSVs, resolves unescaped delimiters, and outputs Shopi
 | Solution Tier | Cost Structure | Manual Effort | Error Rejection Rate |
 |---|---|---|---|
 | **Manual Data Ops Contractor** | **$200.00 / catalog** | 6–8 Hours | Frequent Excel parsing errors |
-| **Regular Store PPE Price** | $8.00 / 1k items | 30 Seconds | Zero delimiter crashes |
-| **⚡ Active 60% Launch Discount** | **$3.20 / 1k items** *(Save 98.4%)* | **30 Seconds** | **100% RFC 4180 Validated** |
+| **Apify Pay-Per-Event (PPE)** | **$0.05 base + $0.0005 / item** *(~$0.55 / 1k)* | **30 Seconds** | **Zero delimiter crashes** |
+| **⚡ Net Savings** | **Save 99.7%** vs Contractor | **Instant** | **100% RFC 4180 Validated** |
 
-> 🚨 **Urgency Hook:** 60% Launch Discount active. Never let malformed supplier feeds block your store inventory.
+> 🚨 **The Ops Killer:** Clean 1,000 product feed rows for $0.55 on Apify Cloud instead of paying a freelancer $200 for manual Excel cleanup.
 
 ---
 

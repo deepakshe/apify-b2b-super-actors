@@ -1,7 +1,7 @@
 # Domain Protocol & Mobile App Link Signals Enricher
 
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Live%20Actor-blue?logo=apify)](https://apify.com/deepaksheoran172/domain-protocol-signals-enricher)
-[![Price](https://img.shields.io/badge/Launch%20Price-$2.40%2F1k%20domains-brightgreen)](https://apify.com/deepaksheoran172/domain-protocol-signals-enricher)
+[![Price](https://img.shields.io/badge/Apify%20Rate-$0.001%2Fdomain-brightgreen)](https://apify.com/deepaksheoran172/domain-protocol-signals-enricher)
 
 Inspects `assetlinks.json`, `apple-app-site-association`, and RFC 9116 `security.txt` endpoints for mobile deep-linking compliance and protocol health.
 
@@ -12,10 +12,10 @@ Inspects `assetlinks.json`, `apple-app-site-association`, and RFC 9116 `security
 | Solution Tier | Cost Structure | Protocol Coverage | RFC Validation |
 |---|---|---|---|
 | **Manual Mobile QA Audit** | **$160.00 / audit** | 1 Domain | Manual browser checks |
-| **Regular Store PPE Price** | $6.00 / 1k domains | Android + iOS + Security | Full automated verification |
-| **⚡ Active 60% Launch Discount** | **$2.40 / 1k domains** *(Save 98.5%)* | **Complete Suite** | **RFC 9116 Compliant** |
+| **Apify Pay-Per-Event (PPE)** | **$0.001 / domain** *($1.00 / 1k domains)* | Android + iOS + Security | Full automated verification |
+| **⚡ Net Savings** | **Save 99.4%** vs Manual QA | **Complete Suite** | **RFC 9116 Compliant** |
 
-> 🚨 **Urgency Hook:** 60% Launch Discount active. Audit universal links across 1,000 domains in 60 seconds.
+> 🚨 **The QA Killer:** Inspect universal app links across 1,000 domains for $1.00 on Apify Cloud instead of paying $160 for manual device QA testing.
 
 ---
 

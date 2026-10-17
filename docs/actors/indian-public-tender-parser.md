@@ -1,7 +1,7 @@
 # India Public Tender & Procurement Intelligence Parser
 
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Live%20Actor-blue?logo=apify)](https://apify.com/deepaksheoran172/indian-public-tender-parser)
-[![Price](https://img.shields.io/badge/Launch%20Price-$4.50%2F1k%20notices-brightgreen)](https://apify.com/deepaksheoran172/indian-public-tender-parser)
+[![Price](https://img.shields.io/badge/Apify%20Rate-$0.02%20base%20+%20$0.005%2Frecord-brightgreen)](https://apify.com/deepaksheoran172/indian-public-tender-parser)
 
 Extracts and normalizes tender notices, EMD values, submission deadlines, and bid documents from public procurement portals (GeM / CPPP).
 
@@ -12,10 +12,10 @@ Extracts and normalizes tender notices, EMD values, submission deadlines, and bi
 | Solution Tier | Cost Structure | Update Speed | Integration |
 |---|---|---|---|
 | **Legacy Tender Portals** | **₹50,000–₹1,50,000 / year** | Daily email dumps | Proprietary closed UI |
-| **Regular Store PPE Price** | $15.00 / 1k notices | Live on demand | REST API / Webhooks |
-| **⚡ Active 60% Launch Discount** | **$4.50 / 1k notices** *(Save 98.0%)* | **Real-Time** | **n8n / Clay / Webhook Native** |
+| **Apify Pay-Per-Event (PPE)** | **$0.02 base + $0.005 / record** *(~$5.02 / 1k)* | Real-Time | n8n / Clay / Webhook Native |
+| **⚡ Net Savings** | **Save 99.0%** vs Annual Contract | **Instant** | **REST API Output** |
 
-> 🚨 **Urgency Hook:** 60% Launch Discount active. Never miss a high-value government procurement deadline.
+> 🚨 **The Portal Killer:** Parse 1,000 government tenders for ~$5.00 on Apify Cloud instead of locking into a ₹50,000/year closed database subscription.
 
 ---
 

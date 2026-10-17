@@ -1,7 +1,7 @@
 # Website Health & Broken Link Auditing Engine
 
 [![Apify Store](https://img.shields.io/badge/Apify%20Store-Live%20Actor-blue?logo=apify)](https://apify.com/deepaksheoran172/website-health-checker)
-[![Price](https://img.shields.io/badge/Launch%20Price-$2.40%2F1k%20pages-brightgreen)](https://apify.com/deepaksheoran172/website-health-checker)
+[![Price](https://img.shields.io/badge/Apify%20Rate-$0.001%2Fpage-brightgreen)](https://apify.com/deepaksheoran172/website-health-checker)
 
 Crawls web properties to identify 404 dead links, broken redirects, slow TTFB latency, and missing SEO metadata.
 
@@ -11,11 +11,11 @@ Crawls web properties to identify 404 dead links, broken redirects, slow TTFB la
 
 | Solution Tier | Cost Structure | Subscription Requirement | Scan Limit |
 |---|---|---|---|
-| **SaaS Crawlers (Ahrefs/Semrush)** | **$199–$499 / month** | Mandatory Monthly Retainer | Strict URL limits |
-| **Regular Store PPE Price** | $6.00 / 1k pages | Pay As You Go ($0.001/page) | Unlimited concurrency |
-| **⚡ Active 60% Launch Discount** | **$2.40 / 1k pages** *(Save 98.4%)* | **Zero Retainer** | **Full Concurrency** |
+| **SaaS Crawlers (Ahrefs/Semrush)** | **$199.00 / month** | Mandatory Monthly Retainer | Strict URL limits |
+| **Apify Pay-Per-Event (PPE)** | **$0.001 / page** *($1.00 / 1k pages)* | Zero Retainer | Unlimited Concurrency |
+| **⚡ Net Savings** | **Save 99.5%** vs SaaS | **Pay As You Go** | **Zero Commitment** |
 
-> 🚨 **Urgency Hook:** 60% Launch Discount active. Eliminate 404 errors before they harm Google search rankings.
+> 🚨 **The SaaS Killer:** Crawl 1,000 pages for $1.00 on Apify Cloud instead of locking into a $199/month recurring tool subscription.
 
 ---
 
