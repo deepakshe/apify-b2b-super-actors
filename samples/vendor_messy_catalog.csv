@@ -1,0 +1,10 @@
+vendor_sku,product_name,category,supplier_notes,price_raw,msrp,stock_level,picture_url,variant_size,variant_color
+SKU-101,Vintage Leather Backpack,Accessories,"Full-grain cowhide leather, water-resistant.",$ 89.99,$ 120.00,14,https://images.example.com/backpack.jpg,One Size,Brown
+SKU-102,Minimalist Ceramic Coffee Mug,Kitchenware,"Handcrafted stoneware ceramic mug.",$18.50,,45,https://images.example.com/mug.jpg,,
+SKU-103,Über-Grip Ergonomic Yoga Mat 🧘,Fitness,"High-density non-slip eco foam mat.","$ 1,299.00","$ 1,499.00",20,https://images.example.com/mat.jpg,Standard,Ocean Blue
+SKU-104-M,Organic Cotton Crewneck Tee,Apparel,"100% GOTS certified organic ring-spun cotton.",$ 28.00,$ 35.00,50,https://images.example.com/tee-black.jpg,Medium,Black
+SKU-104-L,Organic Cotton Crewneck Tee,Apparel,"100% GOTS certified organic ring-spun cotton.",$ 28.00,$ 35.00,30,https://images.example.com/tee-black.jpg,Large,Black
+SKU-105,,Stationery,"Missing product name row test.",$ 5.99,,10,https://images.example.com/notebook.jpg,,
+SKU-106,Faulty Widget A,Tools,"Invalid text price test.",N/A,,5,https://images.example.com/widget.jpg,,
+SKU-107,Faulty Widget B,Tools,"Negative price test.",-25.00,,0,https://images.example.com/widget2.jpg,,
+SKU-101,Duplicate SKU Backpack Accessory,Accessories,"Duplicate SKU test row.",$ 49.99,,8,https://images.example.com/acc.jpg,,

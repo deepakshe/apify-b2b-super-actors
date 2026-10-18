@@ -62,43 +62,45 @@ Each workflow is pre-wired to Apify's synchronous execution endpoint (`https://a
 
 ## ⚡ Instant 1-Click Test (Try via cURL in 5 Seconds)
 
-Run any engine synchronously on Apify Cloud and retrieve clean dataset items immediately:
+Run any engine synchronously on Apify Cloud and retrieve clean dataset items immediately. Replace `YOUR_APIFY_TOKEN` with your token from Apify Console → Settings → API & Integrations.
+
+**New to these tools?** Read the 1-page plain-English guide for each one in [`docs/simple/`](docs/simple/): what it does, who it's for, a real output example, the price in dollars, and 3 steps to run it.
 
 ```bash
 # 1. Store Migration & 301 Redirects
-curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~store-catalog-redirect-extractor/run-sync-get-dataset-items" \
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~store-catalog-redirect-extractor/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"start_urls": [{"url": "https://example-store.com"}], "max_items": 100}'
+  -d '{"platform": "shopify", "storeUrl": "https://www.allbirds.com", "maxPages": 1}'
 
 # 2. Cybersecurity & DMARC/SSL Auditor
-curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~domain-security-super-auditor/run-sync-get-dataset-items" \
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~domain-security-super-auditor/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"domains": ["github.com"], "include_dns_deliverability": true, "timeout_seconds": 10}'
 
 # 3. Website Health & Broken Link Checker
-curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~website-health-checker/run-sync-get-dataset-items" \
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~website-health-checker/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"start_url": "https://example.com", "max_pages": 20, "max_concurrency": 5}'
+  -d '{"startUrl": "https://example.com", "maxPages": 20}'
 
 # 4. Catalog Feed Normalizer
-curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~catalog-feed-normalizer/run-sync-get-dataset-items" \
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~catalog-feed-normalizer/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"csvUrl": "https://raw.githubusercontent.com/deepakshe/apify-b2b-super-actors/main/samples/vendor_messy_catalog.csv"}'
 
 # 5. GovTech Tender Intelligence
-curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~indian-public-tender-parser/run-sync-get-dataset-items" \
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~indian-public-tender-parser/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"raw_html": "<table><tr><td>Tender ID: GEM/2026/B/9921</td><td>EMD: INR 5,00,000</td></tr></table>", "portal_name": "GeM Portal"}'
 
 # 6. AI Models & MCP Registry
-curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~openrouter-mcp-registry/run-sync-get-dataset-items" \
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~openrouter-mcp-registry/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"mode": "both", "free_only": false, "min_context": 128000}'
 
 # 7. Domain Protocol & App Links
-curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~domain-protocol-signals-enricher/run-sync-get-dataset-items" \
+curl -X POST "https://api.apify.com/v2/acts/deepaksheoran172~domain-protocol-signals-enricher/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"domains": ["shopify.com", "stripe.com"], "max_concurrency": 5}'
+  -d '{"domains": ["shopify.com", "stripe.com"], "concurrency": 5}'
 ```
 
 ---
@@ -195,6 +197,8 @@ Add to your client configuration:
 │   └── workflows/
 │       └── apify_heartbeat.yml        # Weekly Cost-Free Metadata Check & Opt-In Test
 ├── README.md                          # Integration & Architecture Guide
+├── docs/simple/                       # 1-page plain-English guide per actor
+├── samples/                           # Sample input files used in the cURL examples
 ├── glama.json                         # Glama.ai MCP Server Verification Manifest
 ├── smithery.yaml                      # Smithery.ai Remote HTTP MCP Configuration
 ├── LICENSE                            # MIT License
