@@ -20,7 +20,7 @@
 | 424solutions.com | not_found | not_found | not_found | not_found | detected |
 
 ## Price
-- $0.001 per domain. **1,000 domains = $1.**
+- $0.003 per domain. **1,000 domains = $3.**
 
 ## How to use (3 steps)
 1. Open https://apify.com/deepaksheoran172/domain-protocol-signals-enricher and click **Try for free**.

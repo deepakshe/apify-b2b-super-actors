@@ -17,8 +17,8 @@ We ran it on allbirds.com with a 25-product limit and got **25 products → 302 
 When the old URL paths are different from Shopify's `/products/<handle>`, you also get a `Redirect from,Redirect to` CSV that you can import in Shopify admin (URL Redirects → Import).
 
 ## Price
-- $0.05 per store run + $0.001 per product exported
-- A 500-product store costs about **$0.55**.
+- $0.01 per store run + $0.001 per product exported
+- A 500-product store costs about **$0.51**.
 
 ## How to use (3 steps)
 1. Open https://apify.com/deepaksheoran172/store-catalog-redirect-extractor and click **Try for free**.

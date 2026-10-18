@@ -22,9 +22,9 @@
 Every row also has the raw SPF and DMARC record, the MX provider, HSTS/CSP status, and domain age, so you can check each result yourself.
 
 ## Price
-- $0.001 per domain for the SSL and security check
-- $0.001 per domain for the DNS, SPF, DMARC and domain-age check
-- **100 domains ≈ $0.20.** If a domain does not resolve (NXDOMAIN), you are not charged for it.
+- $0.0025 per domain for the SSL and security check
+- $0.0025 per domain for the DNS, SPF, DMARC and domain-age check
+- **100 domains ≈ $0.50.** If a domain does not resolve (NXDOMAIN), you are not charged for it.
 
 ## How to use (3 steps)
 1. Open https://apify.com/deepaksheoran172/domain-security-super-auditor and click **Try for free**.
